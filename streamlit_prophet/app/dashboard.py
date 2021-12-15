@@ -75,7 +75,8 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 #add these back in
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
-    conn = init_connection()
+
+conn = init_connection()
 
 # Perform query.
 # Uses st.cache to only rerun when the query changes or after 10 min.
