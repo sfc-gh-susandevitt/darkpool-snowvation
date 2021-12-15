@@ -73,10 +73,11 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 
 # Initialize connection.
 # Uses st.cache to only run once.
-#@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
+
+"""
+#add these back in
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
-
 conn = init_connection()
 
 # Perform query.
@@ -89,7 +90,7 @@ def run_query(query):
 
 database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 col1 = database
-
+"""
 # Print results.
 #for row in rows:
 #    st.write(f"{row[0]} with dataset id {row[1]} has {row[2]} rows")
@@ -100,10 +101,11 @@ st.sidebar.title("Configure your analysis")
 with st.sidebar.expander("Data", expanded=True):
     dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
     
-
+"""
 # Select Database
-#with st.sidebar.expander("Data", expanded=True):
-#    dataset = st.selectbox('Select your dataset for analysis',col1)
+with st.sidebar.expander("Data", expanded=True):
+    dataset = st.selectbox('Select your dataset for analysis',col1)
+"""
 
 # Column names - change to target variable
 with st.sidebar.expander("Columns", expanded=True):
