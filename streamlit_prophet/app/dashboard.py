@@ -95,7 +95,7 @@ def run_query(query):
         #for dataframe_for_batch in cur.fetch_pandas_batches():
           #my_dataframe_processing_function(dataframe_for_batch)
 
-database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
+database = run_query("select TABLE_NAME from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 #st.write(database)
 
 # Print results.
