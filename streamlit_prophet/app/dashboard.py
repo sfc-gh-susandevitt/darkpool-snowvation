@@ -89,7 +89,7 @@ def run_query(query):
         return cur.fetchall()
 
 database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-col1 = st.text(database)
+
 
 # Print results.
 #for row in rows:
@@ -104,7 +104,7 @@ with st.sidebar.expander("Data", expanded=True):
 
 # Select Database
 with st.sidebar.expander("Data", expanded=True):
-    dataset = st.selectbox('Select your dataset for analysis',col1)
+    dataset = st.selectbox('Select your dataset for analysis',st.text(database))
 
 
 # Column names - change to target variable
