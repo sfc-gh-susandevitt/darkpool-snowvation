@@ -112,9 +112,9 @@ run_query("select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where conca
 st.sidebar.caption("Boost Selection")
 
 # Launch analysis
-if st.sidebar.button ("Your dataset only")
+if st.sidebar.button ('No Boost')
    st.write('You selected ML analysis on your own data set only.')
-if st.sidebar.button ("Boost!")
+if st.sidebar.button ('Boost!')
    st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
