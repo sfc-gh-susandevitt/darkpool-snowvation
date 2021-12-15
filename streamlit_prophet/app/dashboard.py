@@ -80,11 +80,7 @@ def init_connection():
 
 conn = init_connection()
 
-#run_the_query = st.sidebar.button("Connect to your datasets")
-
-# Perform query.
-# Uses st.cache to only rerun when the query changes or after 10 min.
-#@st.cache(ttl=600)
+#Select Table
 
 def run_query(query):
     with conn.cursor() as cur:
@@ -98,6 +94,22 @@ def run_query(query):
 
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")        
         
+#Select Dependent Variable
+
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+
+        # Return a Pandas DataFrame containing all of the results.
+        df = cur.fetch_pandas_all()
+        #st.dataframe(df)
+        #labels = df[‘’].unique()
+        option = st.sidebar.selectbox('Select your depdendent variable', df)
+
+run_query("select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = 'DEMAND.DATA.CUSTOMERS' order by COLUMN_NAME asc;")        
+ 
+
+
 
 # Launch analysis
 with st.sidebar.expander("Boost", expanded=True):
