@@ -73,6 +73,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Uses st.cache to only run once.
 
 st.sidebar.title("Configure your analysis")
+st.sidebar.subtitle("Snowflake Database = SNOWCAT2")
 
 #add these back in
 def init_connection():
