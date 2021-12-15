@@ -87,17 +87,17 @@ def run_query(query):
 #     with conn.cursor() as cur:
 #         cur.execute(query)
 #         return cur.fetchall()
-    with connect(...) as conn:
-        with conn.cursor() as cur:
-            # Execute a query.
-            cur.execute(query)
+ #   with connect(...) as conn:
+    with conn.cursor() as cur:
+        # Execute a query.
+        cur.execute(query)
 
-            # Return a Pandas DataFrame containing all of the results.
-            table = cur.fetch_pandas_all()
+        # Return a Pandas DataFrame containing all of the results.
+        table = cur.fetch_pandas_all()
 
-            # Iterate over a list of Pandas DataFrames for result batches.
-            for dataframe_for_batch in cur.fetch_pandas_batches():
-              my_dataframe_processing_function(dataframe_for_batch)
+        # Iterate over a list of Pandas DataFrames for result batches.
+        for dataframe_for_batch in cur.fetch_pandas_batches():
+          my_dataframe_processing_function(dataframe_for_batch)
 
 database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 st.write(database)
