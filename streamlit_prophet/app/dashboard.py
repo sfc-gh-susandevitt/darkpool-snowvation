@@ -77,7 +77,7 @@ def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
 
 conn = init_connection()
-run_the_query = st.button("run query")
+run_the_query = st.sidebar.button("run query")
 
 # Perform query.
 # Uses st.cache to only rerun when the query changes or after 10 min.
@@ -91,7 +91,7 @@ def run_query(query):
         df = cur.fetch_pandas_all()
         st.dataframe(df)
         #labels = df[‘’].unique()
-        option = st.selectbox('Select your data', df)
+        option = st.sidebar.selectbox('Select your data', df)
 
         # Iterate over a list of Pandas DataFrames for result batches.
         #for dataframe_for_batch in cur.fetch_pandas_batches():
