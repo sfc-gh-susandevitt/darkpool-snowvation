@@ -45,7 +45,7 @@ from streamlit_prophet.lib.models.prophet import forecast_workflow
 from streamlit_prophet.lib.utils.load import load_config, load_image
 
 # Page config
-st.set_page_config(page_title="Prophet", layout="wide")
+st.set_page_config(page_title="darkpool", layout="wide")
 
 # Load config
 config, instructions, readme = load_config(
@@ -57,200 +57,47 @@ dates: Dict[Any, Any] = dict()
 report: List[Dict[str, Any]] = []
 
 # Info
-with st.expander("What is this app?", expanded=False):
+with st.beta_expander("What is darkpool?", expanded=True):
     st.write(readme["app"]["app_intro"])
     st.write("")
 st.write("")
-st.sidebar.image(load_image("logo.png"), use_column_width=True)
-display_links(readme["links"]["repo"], readme["links"]["article"])
+st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
+#display_links(readme["links"]["repo"],readme["links"]["repo"])
 
 
-st.sidebar.title("1. Data")
 
-# Load data
-with st.sidebar.expander("Dataset", expanded=True):
-    df, load_options, config, datasets = input_dataset(config, readme, instructions)
-    df, empty_cols = remove_empty_cols(df)
-    print_empty_cols(empty_cols)
+st.sidebar.title("Configure your analysis")
 
-# Column names
-with st.sidebar.expander("Columns", expanded=True):
-    date_col, target_col = input_columns(config, readme, df, load_options)
-    df = format_date_and_target(df, date_col, target_col, config, load_options)
+# Select Dataset
+with st.sidebar.beta_expander("Data", expanded=True):
+    dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
 
-# Filtering
-with st.sidebar.expander("Filtering", expanded=False):
-    dimensions = input_dimensions(df, readme, config)
-    df, cols_to_drop = filter_and_aggregate_df(df, dimensions, config, date_col, target_col)
-    print_removed_cols(cols_to_drop)
+# Column names - change to target variable
+with st.sidebar.beta_expander("Columns", expanded=True):
+    if dataset == 'Credit Card Fraud':   
+        column = st.selectbox('Select your target outcome variable',('ISFRAUD','ISFLAGGEDFRAUD'))
+    if dataset == 'Churn':   
+        st.write("No dataset is available")
 
-# Resampling
-with st.sidebar.expander("Resampling", expanded=False):
-    resampling = input_resampling(df, readme)
-    df = format_datetime(df, resampling)
-    df = resample_df(df, resampling)
-    check_dataset_size(df, config)
+# Launch analysis
+with st.sidebar.beta_expander("Boost", expanded=True):
+#    st.write("Choose the data sets for your analysis:")
+    analysis = st.radio ("Choose the data sets for your analysis:",('None','Own Set','BOOST'))
+    if analysis == 'Own Set': 
+        st.write('You selected ML analysis on your own data set only.')
+    if analysis == 'BOOST': 
+        st.write('You selected to boost your ML accuracy with data from the dark pool.')
+        
 
-# Cleaning
-with st.sidebar.expander("Cleaning", expanded=False):
-    cleaning = input_cleaning(resampling, readme, config)
-    df = clean_df(df, cleaning)
-    check_dataset_size(df, config)
+# Visualizations        
+ 
+st.header("1. Overview (visualization of data)")
+st.write("")
+st.header("2. Evaluation on Dataset")
+st.subheader("Performance Metrics")
+with st.beta_expander("More info on evaluation metrics",expanded=True):
+    st.write(readme["plots"][ "metrics"])
+st.write("")
+st.header("3. Impact of components and regressors")
+st.write("")
 
-st.sidebar.title("2. Modelling")
-
-# Prior scale
-with st.sidebar.expander("Prior scale", expanded=False):
-    params = input_prior_scale_params(config, readme)
-
-# Seasonalities
-with st.sidebar.expander("Seasonalities", expanded=False):
-    params = input_seasonality_params(config, params, resampling, readme)
-
-# Holidays
-with st.sidebar.expander("Holidays"):
-    params = input_holidays_params(params, readme, config)
-
-# External regressors
-with st.sidebar.expander("Regressors"):
-    params = input_regressors(df, config, params, readme)
-
-# Other parameters
-with st.sidebar.expander("Other parameters", expanded=False):
-    params = input_other_params(config, params, readme)
-    df = add_cap_and_floor_cols(df, params)
-
-st.sidebar.title("3. Evaluation")
-
-# Choose whether or not to do evaluation
-evaluate = st.sidebar.checkbox(
-    "Evaluate my model", value=True, help=readme["tooltips"]["choice_eval"]
-)
-
-if evaluate:
-
-    # Split
-    with st.sidebar.expander("Split", expanded=True):
-        use_cv = st.checkbox(
-            "Perform cross-validation", value=False, help=readme["tooltips"]["choice_cv"]
-        )
-        dates = input_train_dates(df, use_cv, config, resampling, dates)
-        if use_cv:
-            dates = input_cv(dates, resampling, config, readme)
-            datasets = get_train_set(df, dates, datasets)
-        else:
-            dates = input_val_dates(df, dates, config)
-            datasets = get_train_val_sets(df, dates, config, datasets)
-
-    # Performance metrics
-    with st.sidebar.expander("Metrics", expanded=False):
-        eval = input_metrics(readme, config)
-
-    # Scope of evaluation
-    with st.sidebar.expander("Scope", expanded=False):
-        eval = input_scope_eval(eval, use_cv, readme)
-
-else:
-    use_cv = False
-
-st.sidebar.title("4. Forecast")
-
-# Choose whether or not to do future forecasts
-make_future_forecast = st.sidebar.checkbox(
-    "Make forecast on future dates", value=False, help=readme["tooltips"]["choice_forecast"]
-)
-if make_future_forecast:
-    with st.sidebar.expander("Horizon", expanded=False):
-        dates = input_forecast_dates(df, dates, resampling, config, readme)
-    with st.sidebar.expander("Regressors", expanded=False):
-        datasets = input_future_regressors(
-            datasets, dates, params, dimensions, load_options, date_col
-        )
-
-# Launch training & forecast
-if st.checkbox(
-    "Launch forecast",
-    value=False,
-    help=readme["tooltips"]["launch_forecast"],
-):
-
-    if not (evaluate | make_future_forecast):
-        st.error("Please check at least 'Evaluation' or 'Forecast' in the sidebar.")
-
-    track_experiments = st.checkbox(
-        "Track experiments", value=False, help=readme["tooltips"]["track_experiments"]
-    )
-
-    datasets, models, forecasts = forecast_workflow(
-        config,
-        use_cv,
-        make_future_forecast,
-        evaluate,
-        cleaning,
-        resampling,
-        params,
-        dates,
-        datasets,
-        df,
-        date_col,
-        target_col,
-        dimensions,
-        load_options,
-    )
-
-    # Visualizations
-
-    if evaluate | make_future_forecast:
-        st.write("# 1. Overview")
-        report = plot_overview(
-            make_future_forecast, use_cv, models, forecasts, target_col, cleaning, readme, report
-        )
-
-    if evaluate:
-        st.write(
-            f'# 2. Evaluation on {"CV" if use_cv else ""} {eval["set"].lower()} set{"s" if use_cv else ""}'
-        )
-        report = plot_performance(
-            use_cv, target_col, datasets, forecasts, dates, eval, resampling, config, readme, report
-        )
-
-    if evaluate | make_future_forecast:
-        st.write(
-            "# 3. Impact of components and regressors"
-            if evaluate
-            else "# 2. Impact of components and regressors"
-        )
-        report = plot_components(
-            use_cv,
-            make_future_forecast,
-            target_col,
-            models,
-            forecasts,
-            cleaning,
-            resampling,
-            config,
-            readme,
-            df,
-            report,
-        )
-
-    if make_future_forecast:
-        st.write("# 4. Future forecast" if evaluate else "# 3. Future forecast")
-        report = plot_future(models, forecasts, dates, target_col, cleaning, readme, report)
-
-    # Save experiment
-    if track_experiments:
-        display_save_experiment_button(
-            report,
-            config,
-            use_cv,
-            make_future_forecast,
-            evaluate,
-            cleaning,
-            resampling,
-            params,
-            dates,
-            date_col,
-            target_col,
-            dimensions,
-        )
