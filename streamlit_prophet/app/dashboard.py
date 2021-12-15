@@ -69,18 +69,18 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 st.sidebar.title("Configure your analysis")
 
 # Select Dataset
-with st.sidebar.beta_expander("Data", expanded=True):
+with st.sidebar.expander("Data", expanded=True):
     dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
 
 # Column names - change to target variable
-with st.sidebar.beta_expander("Columns", expanded=True):
+with st.sidebar.expander("Columns", expanded=True):
     if dataset == 'Credit Card Fraud':   
         column = st.selectbox('Select your target outcome variable',('ISFRAUD','ISFLAGGEDFRAUD'))
     if dataset == 'Churn':   
         st.write("No dataset is available")
 
 # Launch analysis
-with st.sidebar.beta_expander("Boost", expanded=True):
+with st.sidebar.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
     analysis = st.radio ("Choose the data sets for your analysis:",('None','Own Set','BOOST'))
     if analysis == 'Own Set': 
