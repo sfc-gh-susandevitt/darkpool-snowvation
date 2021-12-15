@@ -79,6 +79,19 @@ def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
 
 conn = init_connection()
+
+#run_the_query = st.sidebar.button("Connect to your datasets")
+
+# Perform query.
+# Uses st.cache to only rerun when the query changes or after 10 min.
+#@st.cache(ttl=600)
+
+df=run_query(run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
+st.dataframe(df)
+    dataset = st.sidebar.selectbox('Select your dataset', df)
+
+        
+
 run_the_query = st.sidebar.button("Connect to your datasets")
 
 # Perform query.
