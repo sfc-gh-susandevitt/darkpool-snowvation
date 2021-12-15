@@ -96,11 +96,11 @@ def run_query(query):
         table = cur.fetch_pandas_all()
 
         # Iterate over a list of Pandas DataFrames for result batches.
-        for dataframe_for_batch in cur.fetch_pandas_batches():
-          my_dataframe_processing_function(dataframe_for_batch)
+        #for dataframe_for_batch in cur.fetch_pandas_batches():
+          #my_dataframe_processing_function(dataframe_for_batch)
 
 database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-st.write(database)
+#st.write(database)
 
 # Print results.
 #for row in rows:
