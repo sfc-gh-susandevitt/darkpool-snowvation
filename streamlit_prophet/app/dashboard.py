@@ -109,7 +109,14 @@ def run_query(query):
 
 run_query("select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = 'DEMAND.DATA.CUSTOMERS' order by COLUMN_NAME asc;")        
  
+st.sidebar.caption("Boost Selection")
 
+# Launch analysis
+if st.sidebar.button ("Your dataset only")
+   st.write('You selected ML analysis on your own data set only.')
+if st.sidebar.button ("Boost!")
+   st.write('You selected to boost your ML accuracy with data from the dark pool.')
+        
 
 
 # Launch analysis
