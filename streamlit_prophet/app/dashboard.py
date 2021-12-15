@@ -69,32 +69,25 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 #Snowflake Connection
 #!/usr/bin/env python3
 
-
-
 # Initialize connection.
 # Uses st.cache to only run once.
-
 
 #add these back in
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
-conn = init_connection()
+    conn = init_connection()
 
 # Perform query.
 # Uses st.cache to only rerun when the query changes or after 10 min.
 @st.cache(ttl=600)
 def run_query(query):
-#     with conn.cursor() as cur:
-#         cur.execute(query)
-#         return cur.fetchall()
- #   with connect(...) as conn:
     with conn.cursor() as cur:
-        # Execute a query.
         cur.execute(query)
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         st.dataframe(df)
+        #labels = df[‘’].unique()
         option = st.selectbox('Select your data', df)
 
         # Iterate over a list of Pandas DataFrames for result batches.
