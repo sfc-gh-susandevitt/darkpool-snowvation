@@ -88,7 +88,7 @@ conn = init_connection()
 
 df=run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 st.dataframe(df)
-    dataset = st.sidebar.selectbox('Select your dataset', df)
+dataset = st.sidebar.selectbox('Select your dataset', df)
 
         
 
