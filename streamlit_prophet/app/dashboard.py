@@ -89,7 +89,7 @@ def run_query(query):
         return cur.fetchall()
 
 database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-
+st.write(database)
 
 # Print results.
 #for row in rows:
