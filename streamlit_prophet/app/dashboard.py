@@ -72,6 +72,8 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Initialize connection.
 # Uses st.cache to only run once.
 
+st.sidebar.title("Configure your analysis")
+
 #add these back in
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
@@ -107,7 +109,7 @@ if run_the_query:
 #for row in rows:
 #    st.write(f"{row[0]} with dataset id {row[1]} has {row[2]} rows")
 
-st.sidebar.title("Configure your analysis")
+
 
 # Select Dataset
 with st.sidebar.expander("Data", expanded=True):
