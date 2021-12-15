@@ -93,7 +93,8 @@ def run_query(query):
         cur.execute(query)
 
         # Return a Pandas DataFrame containing all of the results.
-        table = cur.fetch_pandas_all()
+        df = cur.fetch_pandas_all()
+        st.dataframe(df)
 
         # Iterate over a list of Pandas DataFrames for result batches.
         #for dataframe_for_batch in cur.fetch_pandas_batches():
