@@ -95,6 +95,7 @@ def run_query(query):
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         st.dataframe(df)
+        option = st.selectbox('Select your data', df)
 
         # Iterate over a list of Pandas DataFrames for result batches.
         #for dataframe_for_batch in cur.fetch_pandas_batches():
