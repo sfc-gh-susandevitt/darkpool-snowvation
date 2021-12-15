@@ -98,6 +98,11 @@ st.sidebar.title("Configure your analysis")
 # Select Dataset
 with st.sidebar.expander("Data", expanded=True):
     dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
+    
+
+# Select Dataset
+with st.sidebar.expander("Data", expanded=True):
+    dataset = st.selectbox('Select your dataset for analysis',(row[0]))
 
 # Column names - change to target variable
 with st.sidebar.expander("Columns", expanded=True):
