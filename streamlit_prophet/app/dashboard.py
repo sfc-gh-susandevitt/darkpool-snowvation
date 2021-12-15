@@ -99,59 +99,10 @@ def run_query(query):
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")        
         
 
-run_the_query = st.sidebar.button("Connect to your datasets")
-
-# Perform query.
-# Uses st.cache to only rerun when the query changes or after 10 min.
-#@st.cache(ttl=600)
-
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-
-        # Return a Pandas DataFrame containing all of the results.
-        df = cur.fetch_pandas_all()
-        st.dataframe(df)
-        #labels = df[‘’].unique()
-        option = st.sidebar.selectbox('Select your dataset', df)
-
-        # Iterate over a list of Pandas DataFrames for result batches.
-        #for dataframe_for_batch in cur.fetch_pandas_batches():
-          #my_dataframe_processing_function(dataframe_for_batch)
-
-#database = run_query("select TABLE_NAME from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-#st.write(database)
-
-if run_the_query:
-    run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-
-# Print results.
-#for row in rows:
-#    st.write(f"{row[0]} with dataset id {row[1]} has {row[2]} rows")
-
-
-
-# Select Dataset
-with st.sidebar.expander("Data", expanded=True):
-    dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
-    
-
-# Select Database
-#with st.sidebar.expander("Data", expanded=True):
-#    dataset = st.selectbox('Select your dataset for analysis',st.text(database))
-
-
-# Column names - change to target variable
-with st.sidebar.expander("Columns", expanded=True):
-    if dataset == 'Credit Card Fraud':   
-        column = st.selectbox('Select your target outcome variable',('ISFRAUD','ISFLAGGEDFRAUD'))
-    if dataset == 'Churn':   
-        st.write("No dataset is available")
-
 # Launch analysis
 with st.sidebar.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
-    analysis = st.radio ("Choose the data sets for your analysis:",('None','Own Set','BOOST'))
+    analysis = st.radio ("Choose the data sets for your analysis:",('Own Set','BOOST'))
     if analysis == 'Own Set': 
         st.write('You selected ML analysis on your own data set only.')
     if analysis == 'BOOST': 
