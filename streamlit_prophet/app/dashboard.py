@@ -87,8 +87,8 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query("select 'Customer' as customer;")
-col1 = rows
+database = run_query("select array_agg(TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
+col1 = database
 
 # Print results.
 #for row in rows:
@@ -101,7 +101,7 @@ with st.sidebar.expander("Data", expanded=True):
     dataset = st.selectbox('Select your dataset for analysis',('Credit Card Fraud','Churn'))
     
 
-# Select Dataset
+# Select Database
 with st.sidebar.expander("Data", expanded=True):
     dataset = st.selectbox('Select your dataset for analysis',col1)
 
