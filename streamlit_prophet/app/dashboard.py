@@ -86,6 +86,10 @@ conn = init_connection()
 # Uses st.cache to only rerun when the query changes or after 10 min.
 #@st.cache(ttl=600)
 
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+
 df=run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 st.dataframe(df)
 dataset = st.sidebar.selectbox('Select your dataset', df)
