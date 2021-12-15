@@ -103,8 +103,8 @@ with st.sidebar.expander("Data", expanded=True):
     
 
 # Select Database
-with st.sidebar.expander("Data", expanded=True):
-    dataset = st.selectbox('Select your dataset for analysis',st.text(database))
+#with st.sidebar.expander("Data", expanded=True):
+#    dataset = st.selectbox('Select your dataset for analysis',st.text(database))
 
 
 # Column names - change to target variable
