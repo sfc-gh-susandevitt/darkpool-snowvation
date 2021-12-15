@@ -77,10 +77,12 @@ def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
 
 conn = init_connection()
+run_the_query = st.button("run query")
 
 # Perform query.
 # Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)
+#@st.cache(ttl=600)
+
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
@@ -95,8 +97,11 @@ def run_query(query):
         #for dataframe_for_batch in cur.fetch_pandas_batches():
           #my_dataframe_processing_function(dataframe_for_batch)
 
-database = run_query("select TABLE_NAME from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
+#database = run_query("select TABLE_NAME from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 #st.write(database)
+
+if run_the_query:
+    run_query("select TABLE_NAME from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 
 # Print results.
 #for row in rows:
