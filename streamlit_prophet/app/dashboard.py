@@ -87,7 +87,7 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-database = run_query("select array_agg(TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
+database = run_query("select listagg(TABLE_NAME,',') from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
 col1 = database
 
 # Print results.
