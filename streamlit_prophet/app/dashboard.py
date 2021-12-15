@@ -90,10 +90,13 @@ def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
 
-df=run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")
-st.dataframe(df)
-dataset = st.sidebar.selectbox('Select your dataset', df)
+        # Return a Pandas DataFrame containing all of the results.
+        df = cur.fetch_pandas_all()
+        st.dataframe(df)
+        #labels = df[‘’].unique()
+        option = st.sidebar.selectbox('Select your dataset', df)
 
+run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")        
         
 
 run_the_query = st.sidebar.button("Connect to your datasets")
