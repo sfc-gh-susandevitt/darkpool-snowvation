@@ -1,6 +1,8 @@
 from typing import Any, Dict, List
 
 import streamlit as st
+import snowflake.connector
+
 from streamlit_prophet.lib.dataprep.clean import clean_df
 from streamlit_prophet.lib.dataprep.format import (
     add_cap_and_floor_cols,
@@ -67,7 +69,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 #Snowflake Connection
 #!/usr/bin/env python3
 
-import snowflake.connector
+
 
 # Initialize connection.
 # Uses st.cache to only run once.
