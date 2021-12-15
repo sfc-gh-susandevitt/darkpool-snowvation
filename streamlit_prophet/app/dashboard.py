@@ -88,6 +88,7 @@ def run_query(query):
         return cur.fetchall()
 
 rows = run_query("select case when start_station_id = 3118 then 'Demand' else 'Supply'end as DATASET_PROVIDER_TYPE, start_station_id as DATASET_ID, count (*) as records from trips group by start_station_id order by DATASET_PROVIDER_TYPE, start_station_id;")
+col1 = rows[0]
 
 # Print results.
 #for row in rows:
@@ -102,7 +103,7 @@ with st.sidebar.expander("Data", expanded=True):
 
 # Select Dataset
 with st.sidebar.expander("Data", expanded=True):
-    dataset = st.selectbox('Select your dataset for analysis',(row[0]))
+    dataset = st.selectbox('Select your dataset for analysis',col1)
 
 # Column names - change to target variable
 with st.sidebar.expander("Columns", expanded=True):
