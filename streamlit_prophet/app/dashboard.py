@@ -87,8 +87,8 @@ def run_query(query):
         cur.execute(query)
         return cur.fetchall()
 
-rows = run_query("select case when start_station_id = 3118 then 'Demand' else 'Supply'end as DATASET_PROVIDER_TYPE, start_station_id as DATASET_ID, count (*) as records from trips group by start_station_id order by DATASET_PROVIDER_TYPE, start_station_id;")
-col1 = rows[0]
+rows = run_query("select 'Customer' as customer;")
+col1 = rows
 
 # Print results.
 #for row in rows:
