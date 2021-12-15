@@ -57,7 +57,7 @@ dates: Dict[Any, Any] = dict()
 report: List[Dict[str, Any]] = []
 
 # Info
-with st.beta_expander("What is darkpool?", expanded=True):
+with st.expander("What is darkpool?", expanded=True):
     st.write(readme["app"]["app_intro"])
     st.write("")
 st.write("")
