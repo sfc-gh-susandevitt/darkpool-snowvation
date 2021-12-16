@@ -107,7 +107,7 @@ def run_query(query):
         #labels = df[‘’].unique()
         option = st.sidebar.selectbox('Select your depdendent variable', df)
 
-run_query("select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = 'DEMAND.DATA.CUSTOMERS' order by COLUMN_NAME asc;")        
+run_query("select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"+st.write(option)+"' order by 1 asc;")    
  
 st.sidebar.caption("Boost Selection")
 
