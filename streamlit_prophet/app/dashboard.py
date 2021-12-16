@@ -140,7 +140,7 @@ if analyze=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-            chart_data = (df[['TRAINING_JOB','AUC','INCREASED_ACCURACY']])
+            chart_data = (df[['TRAINING_JOB','AUC']])
             st.bar_chart(chart_data)
 if analyze=='Off':
     def run_query(query):
