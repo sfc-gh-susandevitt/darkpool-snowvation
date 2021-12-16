@@ -127,9 +127,9 @@ run_query(query_text)
 ## Add column + line chart 
 
 st.header("Analyze Potential Boost")
-analyze = st.button("Show me my potential accuracy boost",value=False,key='analyze')
+analyze = st.button(label="Analyze",key='analyze')
 
-if analyze==True:
+if analyze=='Analyze':
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -139,10 +139,12 @@ if analyze==True:
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
-if analyze==False:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
+            
+
+analyze = st.button(label="Clear Analysis",key='clear')
+
+if analyze=='Clear Analysis':
+    st.write('Click Analyze to run analysis)
             
 
 #run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
