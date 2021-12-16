@@ -149,10 +149,10 @@ if analyze==True:
             
             
             
-# if analyze==False:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)
+if analyze==False:
+    def run_query(query):
+        with conn.cursor() as cur:
+            cur.execute(query)
                 
 
 
