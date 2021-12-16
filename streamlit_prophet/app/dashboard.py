@@ -222,17 +222,17 @@ st.header("Auto-Boost Your Model")
 
 boost=st.checkbox("Auto-boost my model",value=False,key='boost')
 if boost==True:
-    def run_query3(query_text):
+    def run_query(query_text):
         with conn.cursor() as cur:
             cur.execute(query_text)      
             df = cur.fetch_pandas_all()
-            option3 = st.selectbox('Select your dataset for inference', df)
+            option = st.selectbox('Select your dataset for inference', df)
 if boost==False:
      def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)         
         
-run_query3("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
+run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
 # #if boost=='On':
 # if boost==True:
