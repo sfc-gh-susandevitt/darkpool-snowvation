@@ -171,10 +171,10 @@ if pricing==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            st.write("Price per thousand rows of boost data is caluclated as Points x 1000 x $.01")
+            st.write("The price is calculated as $0.01 per basis point of boost per 1000 rows scored.")
             col1,col2= st.columns(2)
-            col1.metric("Boost Points","27.7")
-            col2.metric("Your Price","$277")
+            col1.metric("Basis Points of Boost","2774")
+            col2.metric("Price Per Thousand Rows Scored","$27.74")
 
 if pricing==False:
     def run_query(query):
@@ -208,9 +208,10 @@ if st.button('Run Inference'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
-        st.write("You have paid $277 for at 27.7 point accuracy boost in your inference model.  See a sample of your inferenced data here:")
+        st.write("Total Rows scored = 10,000.  Cost of boost = $227.40.  See a sample of your inferenced data here:")
         st.write(df)
-        st.subheader("Revenue Sharing")
+        st.write("")
+        st.subheader("Darkpool Weighted Revenue Distribution to Suppliers")
         st.image(load_image("image.png"), use_column_width=True)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
