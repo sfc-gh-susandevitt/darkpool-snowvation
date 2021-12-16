@@ -167,7 +167,7 @@ if boost=='On':
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            st.dataframe(data=df,height=500)
+            st.dataframe(data=df,width=500,height=500)
 if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
