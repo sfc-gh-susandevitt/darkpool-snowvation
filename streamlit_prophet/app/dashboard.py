@@ -157,7 +157,9 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 
 st.header("Auto-boost your model?")
 boost = st.radio("",('Off','On'),index=0,key='boost')
-
+if 'key' not in st.session_state:
+    st.session_state['key']=boost
+    st.write(st.session_state.key)
 
 if boost=='On':
     def run_query(query):
@@ -167,8 +169,9 @@ if boost=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-if boost=='On':
-    st.balloons()
+#turn balloons only when CLICK IS clicked to yes
+#if boost=='On':
+#    st.balloons()
 if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
