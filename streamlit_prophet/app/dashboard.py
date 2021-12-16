@@ -201,13 +201,13 @@ if boost==True:
             df = cur.fetch_pandas_all()
             option = st.selectbox('Select your dataset for inference', df)
             if st.button('Run Inference'):
-                def run_query(query_text2):
+                def run_query2(query_text2):
                  with conn.cursor() as cur:
                     cur.execute(query_text2)      
                     df = cur.fetch_pandas_all()
                     st.write(df)
 
-             run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")                        
+run_query2("select * from darkpool_common.ml.demand1_scoring_output limit 20;")                        
 
 #     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")  
 if boost==False:
