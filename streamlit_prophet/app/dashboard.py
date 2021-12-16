@@ -222,15 +222,14 @@ if boost==False:
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
 
-if st.button('Run Inference'):
-    with st.spinner('Wait for it...'):
-        time.sleep(5)
-        def run_query(query_text2):
-            with conn.cursor() as cur:
-             cur.execute(query_text2)      
-             df = cur.fetch_pandas_all()
-             st.write(df)
 
-    run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
+if st.button('Run Inference'):    
+     def run_query(query_text2):
+       with conn.cursor() as cur:
+         cur.execute(query_text2)      
+         df = cur.fetch_pandas_all()
+         st.write(df)
+
+run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
             
     
