@@ -129,7 +129,7 @@ run_query(query_text)
 
 ## Add column + line chart 
 
-st.subheader("Analyze potential boost?")
+st.header("Analyze potential boost?")
 analyze = st.radio("",('Off','On'),index=0,key='analyze')
 
 if analyze=='On':
@@ -167,7 +167,7 @@ if boost=='On':
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            st.dataframe(df)
+            st.json(df)
 if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
@@ -180,26 +180,6 @@ run_query("select * from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;")
 
 
 
-
-
-
-# Launch analysis
-#with st.expander("Boost", expanded=True):
-#    st.write("Choose the data sets for your analysis:")
-#analysis = st.radio ("",('Off','On'))
-#if analysis == 'Off': 
-#    st.write('You selected ML analysis on your own data set only.  Here are your results.')
-    
-#Add metics
-#if analysis == 'On': 
-#    st.write('You selected to boost your ML accuracy with data from the dark pool. Here are your results')
-        
-# Launch analysis
-#if st.sidebar.button ('Off'):
-#   st.write('You selected ML analysis on your own data set only.')
-    
-#with st.expander("Click here for boost analysis",expanded=False):
-#    st.write("Here is your boost analysis:")
 
 
 
