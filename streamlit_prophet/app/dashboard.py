@@ -155,13 +155,13 @@ if analyze==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-            auc=df["AUC"]
+            auc=df["AUC"].astype(str)
             job=df["TRAINING_JOB"]
             acc=df["INCREASED_ACCURACY"]
             chart_data = [job,auc,acc] 
             #st.write(auc)
+            st.bar_chart(auc)
             #st.bar_chart(chart_data)
-            st.bar_chart(chart_data)
 if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
