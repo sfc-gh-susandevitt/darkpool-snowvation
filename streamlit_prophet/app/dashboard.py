@@ -72,8 +72,20 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Initialize connection.
 # Uses st.cache to only run once.
 
+# Headers   
+
 st.header("Your selections:")
 st.write("")
+
+st.header("Potential Accuracy Boost for Your Dataset")
+st.write("")
+
+
+
+
+
+
+#Sidebar
 
 st.sidebar.title("Configure your analysis")
 st.sidebar.caption("Snowflake Database = SNOWCAT2")
@@ -121,9 +133,6 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
-  
- 
-st.sidebar.header("Auto-boost your models?")
 
 # Launch analysis
 #if st.sidebar.button ('Off'):
@@ -132,6 +141,10 @@ st.sidebar.header("Auto-boost your models?")
 #   st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
+st.header("Potential Accuracy Boost for Your Dataset")
+st.write("")
+
+st.header("Auto-boost your models?")
 # Launch analysis
 #with st.sidebar.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
@@ -142,10 +155,6 @@ if analysis == 'On':
     st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
-# Visualizations        
- 
 
-st.header("2. Evaluation on Dataset")
-st.write("")
 
 
