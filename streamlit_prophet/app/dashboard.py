@@ -167,7 +167,8 @@ if boost==True:
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        st.dataframe(df)
+        #st.dataframe(df)
+        st.json(df)
 
 
 run_query("select * from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
