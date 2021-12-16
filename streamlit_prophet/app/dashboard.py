@@ -120,12 +120,12 @@ run_query(query_text)
 
   
  
-st.sidebar.caption("Boost Selection")
+st.sidebar.caption("Auto-boost your models?")
 
 # Launch analysis
-if st.sidebar.button ('No Boost'):
+if st.sidebar.button ('Off'):
    st.write('You selected ML analysis on your own data set only.')
-if st.sidebar.button ('Boost!'):
+if st.sidebar.button ('On'):
    st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
