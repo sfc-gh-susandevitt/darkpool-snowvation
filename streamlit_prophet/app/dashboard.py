@@ -156,12 +156,9 @@ st.header("Analyze Potential Boost")
 def run_query(query):
   with conn.cursor() as cur:
       cur.execute(query)
-
-# Return a Pandas DataFrame containing all of the results.
-   df = cur.fetch_pandas_all()
-   st.dataframe(df)
+      df = cur.fetch_pandas_all()
+      st.dataframe(df)
             
-
 run_query("select *  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT;") 
 
 
