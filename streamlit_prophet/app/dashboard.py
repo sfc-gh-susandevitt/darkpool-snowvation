@@ -146,7 +146,7 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        if analyze=='Yes':
+        if analyze=='Analyze':
             st.dataframe(df)
         else:
             st.write("")
