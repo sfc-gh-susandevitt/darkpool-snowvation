@@ -171,10 +171,10 @@ if pricing==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            col1,col2,col3 = st.columns(3)
-            col1.metric("Increased Accuracy", "47%")
-            col2.metric("Rows","1,000,023")
-            col3.metric("Price","$1,000")
+            st.write("Price per thousand rows of boost data is caluclated as Points * 1000 * $.01")
+            col1,col2= st.columns(2)
+            col1.metric("Points","27.7")
+            col2.metric("Price","$277")
 #            st.write("TESTING HERE:")
 #            st.dataframe(df)
 #            accuracy ='"'+df['INCREASED_ACCURACY']+'"'
