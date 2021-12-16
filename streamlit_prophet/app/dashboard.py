@@ -92,7 +92,8 @@ def run_query(query):
         #st.dataframe(df)
         #labels = df[‘’].unique()
         option = st.sidebar.selectbox('Select your dataset', df)
-
+        st.write(option)
+        
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');")        
         
 #Select Dependent Variable
@@ -106,11 +107,11 @@ def run_query(query):
         #st.dataframe(df)
         #labels = df[‘’].unique()
         option2 = st.sidebar.selectbox('Select your dependent variable', df)
-        st.write(option2)
+
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-text2 = "DEMAND.DATA.CUSTOMERS"
-#text2 = st.write(option)
+#text2 = "DEMAND.DATA.CUSTOMERS"
+text2 = st.write(option)
 text3 = "' order by 1 asc;"
 
 query_text = text1+text2+text3
