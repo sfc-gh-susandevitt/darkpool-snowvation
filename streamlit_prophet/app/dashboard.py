@@ -2,6 +2,8 @@ from typing import Any, Dict, List
 
 import streamlit as st
 import snowflake.connector
+import plotly.figure_factory as ff
+import numpy as np
 
 from streamlit_prophet.lib.dataprep.clean import clean_df
 from streamlit_prophet.lib.dataprep.format import (
@@ -160,6 +162,11 @@ if analyze==False:
         with conn.cursor() as cur:
             cur.execute(query)
             
+            
+auc=df["AUC"]
+st.write(auc)
+
+            
 
 #run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
@@ -223,3 +230,8 @@ if boost==False:
         
 
 run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
+
+
+
+
+
