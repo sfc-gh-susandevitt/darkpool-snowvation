@@ -208,7 +208,8 @@ if st.button('Run Inference'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
-        st.write("Total Rows scored = 10,000.  Cost of boost = $227.40.  See a sample of your inferenced data here:")
+        st.write("Total Rows scored = 10,000.  Cost of boost = $277.40.")
+        st.write ("See a sample of your inferenced data here:")
         st.write(df)
         st.write("")
         st.subheader("Darkpool Weighted Revenue Distribution to Suppliers")
