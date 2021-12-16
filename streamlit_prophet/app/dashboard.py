@@ -234,24 +234,15 @@ if boost==False:
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-# #if boost=='On':
-# if boost==True:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)
 
-#             # Return a Pandas DataFrame containing all of the results.
-#             df = cur.fetch_pandas_all()
-#             st.dataframe(df)
-#             st.write(df)
-# if boost==False:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)
-                      
-# run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
-
-
-
-
-
+if st.button('Run Inference'):
+    st.spinner(text="In progress...")
+    def run_query(query_text):
+        with conn.cursor() as cur:
+            cur.execute(query_text)      
+            df = cur.fetch_pandas_all()
+            st.write(df)
+            
+run_query ("select * from darkpool_common.ml.demand1_scoring_output;")            
+            
+    
