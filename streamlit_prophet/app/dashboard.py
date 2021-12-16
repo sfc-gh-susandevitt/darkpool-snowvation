@@ -156,10 +156,10 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 # Execute Boost
 
 st.header("Auto-boost your model?")
-boost=st.checkbox("",value=False,key='boost')
+boost=st.checkbox("Auto-boost!",value=False,key='boost')
 #boost = st.radio("",('Off','On'),index=0,key='boost')
 st.session_state['key']=boost
-st.write(st.session_state.key)
+#st.write(st.session_state.key)
 
 #if boost=='On':
 if boost==True:
@@ -170,8 +170,8 @@ if boost==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-if st.session_state.key==True:
-   st.balloons()
+#if st.session_state.key==True:
+#   st.balloons()
 if boost==False:
     def run_query(query):
         with conn.cursor() as cur:
