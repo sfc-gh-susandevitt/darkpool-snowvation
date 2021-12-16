@@ -110,8 +110,6 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        #st.dataframe(df)
-        #labels = df[‘’].unique()
         option2 = st.sidebar.selectbox('Select your dependent variable', df)
         st.write('You have selected dependent variable ',option2)
 
@@ -151,13 +149,21 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 # Show Price
 
 st.header("Pricing Model")
-st.header("Analyze Potential Boost")
 
-def run_query(query):
-  with conn.cursor() as cur:
-      cur.execute(query)
-      df = cur.fetch_pandas_all()
-      st.dataframe(df)
+pricing = st.checkbox("Show me my pricing model",value=False,key='analyze')
+
+if pricing==True:
+    def run_query(query):
+        with conn.cursor() as cur:
+            cur.execute(query)
+
+            # Return a Pandas DataFrame containing all of the results.
+            df = cur.fetch_pandas_all()
+            st.dataframe(df)
+if pricing==False:
+    def run_query(query):
+        with conn.cursor() as cur:
+            cur.execute(query)
             
 run_query("select *  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT;") 
 
