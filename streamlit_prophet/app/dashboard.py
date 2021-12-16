@@ -207,7 +207,7 @@ if boost==True:
                     df = cur.fetch_pandas_all()
                     st.write(df)
 
-                    run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")                        
+             run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")                        
 
 #     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")  
 if boost==False:
