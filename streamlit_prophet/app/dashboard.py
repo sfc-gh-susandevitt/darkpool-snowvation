@@ -156,9 +156,12 @@ if analyze==True:
             df = cur.fetch_pandas_all()
             st.dataframe(df)
             auc=df["AUC"]
-            st.write(auc)
-          #  chart_data = (df[['TRAINING_JOB','AUC']])
-          #  st.bar_chart(chart_data)
+            job=df["TRAINING_JOB"]
+            acc=df["INCREASED_ACCURACY"]
+            chart_data = [job,auc,acc] 
+            #st.write(auc)
+            #st.bar_chart(chart_data)
+            st.plotly_chart(chart_data, use_container_width=True)
 if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
