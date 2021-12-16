@@ -128,24 +128,27 @@ def run_query(query):
 ## Add column + line chart 
 
 st.header("Analyze Potential Boost")
+
 analyze = st.button(label="Analyze",key='analyze')
 
-if analyze=='Analyze':
+if st.button('Analyze'):
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
 
-run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
- 
+ else:
+    st.write("")
+    
+run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
              
-             # Show Price
+# Show Price
 
 st.header("Pricing Model")
 
