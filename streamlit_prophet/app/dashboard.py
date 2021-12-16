@@ -130,7 +130,7 @@ run_query(query_text)
 ## Add column + line chart 
 
 st.header("Analyze potential boost?")
-analyze = st.checkbox("Auto-boost!",value=False,key='analyze')
+analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
 if analyze==True:
     def run_query(query):
@@ -156,7 +156,7 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 # Execute Boost
 
 st.header("Auto-boost your model?")
-boost=st.checkbox("Auto-boost!",value=False,key='boost')
+boost=st.checkbox("Auto-boost my model",value=False,key='boost')
 #boost = st.radio("",('Off','On'),index=0,key='boost')
 st.session_state['key']=boost
 #st.write(st.session_state.key)
