@@ -115,8 +115,8 @@ def run_query(query):
         st.write('You have selected dependent variable ',option2)
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-text2 = "DEMAND.DATA.CUSTOMERS"
-#text2 = st.write(option2)
+#text2 = "DEMAND.DATA.CUSTOMERS"
+text2 = option2
 text3 = "' order by 1 asc;"        
 query_text = text1+text2+text3
 run_query(query_text)  
