@@ -160,13 +160,14 @@ if pricing==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
+            st.metric(label="Price", value=df['PRICE'])
             st.dataframe(df)
 if pricing==False:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
             
-run_query("select *  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT;") 
+run_query("select sum(SUPPLIER_REV_$) as PRICE, INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select  to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
 
 
 
