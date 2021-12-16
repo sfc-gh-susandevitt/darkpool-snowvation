@@ -225,11 +225,11 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 if st.button('Run Inference'):
     with st.spinner('Wait for it...'):
         time.sleep(5)
-            def run_query(query_text2):
-                with conn.cursor() as cur:
-                cur.execute(query_text2)      
-                df = cur.fetch_pandas_all()
-                st.write(df)
+        def run_query(query_text2):
+            with conn.cursor() as cur:
+             cur.execute(query_text2)      
+             df = cur.fetch_pandas_all()
+             st.write(df)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
             
