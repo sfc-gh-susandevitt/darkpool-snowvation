@@ -108,7 +108,7 @@ def run_query2(query_text):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        option2 = st.selectbox('Select your dependent variable', df)
+        option2 = st.selectbox('Select your target column', df)
         #if option2:
         #    st.write('You have selected dependent variable ',option2)
         #st.write(option)       
