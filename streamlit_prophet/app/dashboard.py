@@ -134,9 +134,10 @@ run_query(query_text)
 
 st.subheader("Analyze Potential Boost?")
 st.write("")
-st.button("Yes")
 
-if st.button ('Yes'):
+testboost = st.button("Yes")
+
+if testboost =  ('Yes'):
     st.write('Potential Accuracy Boost for Your Dataset')
     st.write("")
 
