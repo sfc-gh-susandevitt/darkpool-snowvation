@@ -105,8 +105,8 @@ def run_query(query):
         df = cur.fetch_pandas_all()
         #st.dataframe(df)
         #labels = df[‘’].unique()
-        option = st.sidebar.selectbox('Select your dependent variable', df)
-        st.write(option)
+        option2 = st.sidebar.selectbox('Select your dependent variable', df)
+        st.write(option2)
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
 text2 = "DEMAND.DATA.CUSTOMERS"
