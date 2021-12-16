@@ -116,7 +116,7 @@ def run_query2(query_text):
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-if st.button('Run Baseline Analysis'):
+if st.button('Run Baseline Analysis',key='basebutton'):
     def run_query(query_text2):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
@@ -124,8 +124,8 @@ if st.button('Run Baseline Analysis'):
         baseline = df["AUC"]
         st.write(baseline)
         if 'key' not in st.session_state:
-            st.session_state['key']=True
-            st.write(st.session_state.key)
+            st.session_state['basebutton']=True
+            st.write(st.session_state.basebutton)
 
     run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
