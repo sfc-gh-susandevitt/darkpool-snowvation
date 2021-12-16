@@ -136,7 +136,6 @@ run_query(query_text)
 st.subheader("Analyze potential boost?")
 st.write("")
 analyze = st.button('Analyze')
-st.write(analyze)
 
 #Select Table
 
@@ -148,7 +147,7 @@ def run_query(query):
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         
-if analyze=='Analyze':
+if analyze=='True':
    st.dataframe(df)
 else:
     st.write("")
