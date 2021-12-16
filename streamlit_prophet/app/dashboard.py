@@ -142,7 +142,8 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 
 # ## Add column + line chart 
 
- st.header("Analyze Potential Boost")
+st.header("Analyze Potential Boost")
+
 # analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
 # if analyze==True:
