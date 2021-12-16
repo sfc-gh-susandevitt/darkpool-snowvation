@@ -150,7 +150,7 @@ if analyze=='On':
             # Return a Pandas DataFrame containing all of the results.
             df3 = cur.fetch_pandas_all()
             st.dataframe(df3)
-else: 
+if analyze=='Off':
     st.write("")    
 
 
