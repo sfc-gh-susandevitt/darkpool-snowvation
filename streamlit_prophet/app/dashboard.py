@@ -123,6 +123,9 @@ if st.button('Run Baseline Analysis'):
         df = cur.fetch_pandas_all()
         baseline = df["AUC"]
         st.write(baseline)
+        if 'key' not in st.session_state:
+            st.session_state['key']=True
+            st.write(st.session_state.key)
 
     run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
@@ -144,9 +147,7 @@ if analyze==True:
             df = cur.fetch_pandas_all()
             base = alt.Chart(df).mark_bar().encode(x='SUPPLIER', y='BOOST_POINTS')
             st.altair_chart(base, use_container_width=True)
-            st.dataframe(df)
-
-            
+            st.dataframe(df)           
             
             
 if analyze==False:
