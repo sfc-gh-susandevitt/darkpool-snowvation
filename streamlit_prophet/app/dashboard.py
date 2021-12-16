@@ -236,12 +236,12 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 
 
 if st.button('Run Inference'):
-    def run_query2(query_text):
+    def run_query4(query_text):
         with conn.cursor() as cur:
             cur.execute(query_text)      
             df = cur.fetch_pandas_all()
             st.write(df)
             
-run_query2 ("select * from darkpool_common.ml.demand1_scoring_output;")            
+run_query4("select * from darkpool_common.ml.demand1_scoring_output;")            
             
     
