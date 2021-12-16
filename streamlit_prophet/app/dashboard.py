@@ -217,7 +217,7 @@ if pricing==False:
         with conn.cursor() as cur:
             cur.execute(query)
             
-#run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, concat(cast(cast(INCREASED_ACCURACY*100 as numeric)as varchar), '%') as INCREASED_ACCURACY,cast(TOTAL_ROWS as varchar) as TOTAL_ROWS from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select distinct AUC,10,2/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
+run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, concat(cast(cast(INCREASED_ACCURACY*100 as numeric)as varchar), '%') as INCREASED_ACCURACY,cast(TOTAL_ROWS as varchar) as TOTAL_ROWS from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select distinct AUC,10,2/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
 
 
 
@@ -249,7 +249,7 @@ if boost==False:
             
         
 
-#run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
+run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
 
 
 
