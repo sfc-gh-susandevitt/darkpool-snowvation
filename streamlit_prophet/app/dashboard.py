@@ -126,41 +126,43 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #Select Dependent Variable
  
 
+
+#if option:
+#     text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
+#     #text2 = "DEMAND.DATA.CUSTOMERS"
+#     text2 = option
+#     text3 = "' order by 1 asc;"   
+#     query_text = text1+text2+text3
+#     st.write(query_text)
+
+    #run_query(query_text)  
+
+
 #Analyze boost
 
-# ## Add column + line chart 
+## Add column + line chart 
 
 st.header("Analyze Potential Boost")
+analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
-# analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
-
-
-
-def analyzefunction():
-    st.write('Clicked')
-with st.form("myform"):
-    submit=st.form_submit_button("Show Accuracy")
-if submit:
+if analyze==True:
     def run_query(query):
         with conn.cursor() as cur:
-             cur.execute(query)
+            cur.execute(query)
 
-             # Return a Pandas DataFrame containing all of the results.
-             df = cur.fetch_pandas_all()
-             st.dataframe(df)
+            # Return a Pandas DataFrame containing all of the results.
+            df = cur.fetch_pandas_all()
+            st.dataframe(df)
+          #  chart_data = (df[['TRAINING_JOB','AUC']])
+          #  st.bar_chart(chart_data)
+if analyze==False:
+    def run_query(query):
+        with conn.cursor() as cur:
+            cur.execute(query)
             
-            
-#           #  chart_data = (df[['TRAINING_JOB','AUC']])
-#           #  st.bar_chart(chart_data)
 
-# if analyze==False:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)    
-#analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
-
-#run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
-
+#run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
+run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 # Show Price
 
 st.header("Pricing Model")
@@ -188,7 +190,7 @@ if pricing==False:
         with conn.cursor() as cur:
             cur.execute(query)
             
-#run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, concat(cast(cast(INCREASED_ACCURACY*100 as numeric)as varchar), '%') as INCREASED_ACCURACY,cast(TOTAL_ROWS as varchar) as TOTAL_ROWS from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select distinct AUC,10,2/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
+run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, concat(cast(cast(INCREASED_ACCURACY*100 as numeric)as varchar), '%') as INCREASED_ACCURACY,cast(TOTAL_ROWS as varchar) as TOTAL_ROWS from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select distinct AUC,10,2/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
 
 
 
@@ -220,6 +222,4 @@ if boost==False:
             
         
 
-#run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
-
-
+run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
