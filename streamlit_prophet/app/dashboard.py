@@ -106,6 +106,8 @@ def run_query(query):
         text3 = "' order by 1 asc;"   
         query_text = text1+text2+text3
         #st.write(query_text)
+        if option:
+            run_query2(query_text)
         
 def run_query2(query_text):
     with conn.cursor() as cur:
@@ -114,16 +116,10 @@ def run_query2(query_text):
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         option2 = st.sidebar.selectbox('Select your dependent variable', df)
-        st.write('You have selected dependent variable ',option2)
+        if option2:
+            st.write('You have selected dependent variable ',option2)
         #st.write(option)       
         
-        
-        
-        
-run_query2(query_text)
-        
-        
- 
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');") 
 
 
