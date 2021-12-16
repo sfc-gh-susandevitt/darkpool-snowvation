@@ -136,8 +136,11 @@ run_query(query_text)
 st.subheader("Analyze potential boost?")
 st.write("")
 
-with st.expander("Analyze Potential Boost",expanded=False):
+with st.expander("Click here for boost analysis",expanded=False):
     st.write("Here is your boost analysis:")
+## Add chart
+
+
 
 
 
@@ -145,14 +148,20 @@ with st.expander("Analyze Potential Boost",expanded=False):
 
 # Boost
 st.header("Auto-boost your models?")
+boost=st.button('Yes')
+
+
+
 # Launch analysis
 #with st.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
-analysis = st.radio ("",('Off','On'))
-if analysis == 'Off': 
-    st.write('You selected ML analysis on your own data set only.')
-if analysis == 'On': 
-    st.write('You selected to boost your ML accuracy with data from the dark pool.')
+#analysis = st.radio ("",('Off','On'))
+#if analysis == 'Off': 
+#    st.write('You selected ML analysis on your own data set only.  Here are your results.')
+    
+#Add metics
+#if analysis == 'On': 
+#    st.write('You selected to boost your ML accuracy with data from the dark pool. Here are your results')
         
 # Launch analysis
 #if st.sidebar.button ('Off'):
