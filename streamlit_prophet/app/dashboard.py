@@ -137,7 +137,7 @@ st.write("")
 testboost = st.button("Yes, Analyze Boost")
 
 if testboost =='Yes, Analyze Boost':
-    st.subheader("Potential Accuracy Boost for Your Dataset")
+    st.write("Potential Accuracy Boost for Your Dataset")
     st.write("")
 
 st.header("Auto-boost your models?")
