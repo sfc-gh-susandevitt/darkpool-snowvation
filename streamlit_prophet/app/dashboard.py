@@ -90,15 +90,7 @@ conn = init_connection()
 
 #Select Table
 
-def run_query2(query_text):
-    with conn.cursor() as cur:
-        cur.execute(query)
 
-        # Return a Pandas DataFrame containing all of the results.
-        df = cur.fetch_pandas_all()
-        option2 = st.sidebar.selectbox('Select your dependent variable', df)
-        st.write('You have selected dependent variable ',option2)
-        #st.write(option)
 
 
 def run_query(query):
@@ -114,6 +106,20 @@ def run_query(query):
         text3 = "' order by 1 asc;"   
         query_text = text1+text2+text3
         #st.write(query_text)
+        
+ def run_query2(query_text):
+    with conn.cursor() as cur:
+        cur.execute(query)
+
+        # Return a Pandas DataFrame containing all of the results.
+        df = cur.fetch_pandas_all()
+        option2 = st.sidebar.selectbox('Select your dependent variable', df)
+        st.write('You have selected dependent variable ',option2)
+        #st.write(option)       
+        
+        
+        
+        
         run_query2(query_text)
         
         
