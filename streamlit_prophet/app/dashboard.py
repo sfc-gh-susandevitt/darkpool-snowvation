@@ -219,10 +219,8 @@ run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, con
 # Execute Boost
 
 st.header("Auto-Boost Your Model")
+
 boost=st.checkbox("Auto-boost my model",value=False,key='boost')
-#boost = st.radio("",('Off','On'),index=0,key='boost')
-st.session_state['key']=boost
-#st.write(st.session_state.key)
 
 #if boost=='On':
 if boost==True:
@@ -233,18 +231,13 @@ if boost==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-# if st.session_state.key==True:
-#    st.balloons()
+            st.write(df)
 if boost==False:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
-            
-            
-            
-        
-
-run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
+                      
+run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
 
 
