@@ -212,7 +212,7 @@ if st.button('Run Inference'):
         st.write(df)
         st.write("")
         st.subheader("Darkpool Weighted Revenue Distribution to Suppliers")
-        st.image(load_image("image.png"), use_column_width=True)
+        st.image(load_image("pie.png"), use_column_width=True)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
 
