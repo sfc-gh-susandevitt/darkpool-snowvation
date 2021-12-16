@@ -155,6 +155,8 @@ if analyze==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
+            auc=df["AUC"]
+            st.write(auc)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
 if analyze==False:
@@ -163,8 +165,7 @@ if analyze==False:
             cur.execute(query)
             
             
-auc=df["AUC"]
-st.write(auc)
+
 
             
 
