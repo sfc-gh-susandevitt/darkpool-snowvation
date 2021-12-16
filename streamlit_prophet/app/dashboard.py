@@ -106,7 +106,7 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #Select Dependent Variable
 
  
-def run_query(query):
+def run_query2(query):
     with conn.cursor() as cur:
         cur.execute(query)
 
@@ -116,13 +116,13 @@ def run_query(query):
         st.write('You have selected dependent variable ',option2)
         #st.write(option)
 
-if option:
-    text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-    #text2 = "DEMAND.DATA.CUSTOMERS"
-    text2 = option
-    text3 = "' order by 1 asc;"   
-    query_text = text1+text2+text3
-    st.write(query_text)
+#if option:
+#     text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
+#     #text2 = "DEMAND.DATA.CUSTOMERS"
+#     text2 = option
+#     text3 = "' order by 1 asc;"   
+#     query_text = text1+text2+text3
+#     st.write(query_text)
 
     #run_query(query_text)  
 
