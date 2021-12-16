@@ -75,21 +75,13 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Headers   
 
 st.header("Your Selections:")
-st.write("")
-
-
-
-
-
-
-
 
 #Sidebar
 
 st.sidebar.title("Configure your analysis")
 st.sidebar.caption("Snowflake Database = SNOWCAT2")
 
-#add these back in
+
 def init_connection():
     return snowflake.connector.connect(**st.secrets["snowflake"])
 
@@ -134,8 +126,8 @@ run_query(query_text)
 
 
 #Analyze boost
+
 st.subheader("Analyze potential boost?")
-st.write("")
 analyze = st.radio("",('Off','On'))
 
 
