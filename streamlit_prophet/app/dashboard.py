@@ -214,6 +214,6 @@ if st.button('Run Inference'):
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
 
 st.subheader("Revenue Sharing")
-st.image(load_image("image.png"), use_column_width=True)
+st.expander.image(load_image("image.png"), use_column_width=True)
 
 
