@@ -134,25 +134,30 @@ st.header("Analyze Potential Boost")
 
 # analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
-# if analyze==True:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)
 
-#             # Return a Pandas DataFrame containing all of the results.
-#             df = cur.fetch_pandas_all()
-#             st.dataframe(df)
-#           #  chart_data = (df[['TRAINING_JOB','AUC']])
-#           #  st.bar_chart(chart_data)
-# if analyze==False:
-#     def run_query(query):
-#         with conn.cursor() as cur:
-#             cur.execute(query)
 
 def analyzefunction():
     st.write('Clicked')
-        
-analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
+with st.form("myform"):
+    submit=st.form_submit_button("Show Accuracy")
+if submit:
+    def run_query(query):
+        with conn.cursor() as cur:
+             cur.execute(query)
+
+             # Return a Pandas DataFrame containing all of the results.
+             df = cur.fetch_pandas_all()
+             st.dataframe(df)
+            
+            
+#           #  chart_data = (df[['TRAINING_JOB','AUC']])
+#           #  st.bar_chart(chart_data)
+
+# if analyze==False:
+#     def run_query(query):
+#         with conn.cursor() as cur:
+#             cur.execute(query)    
+#analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
 
 #run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
