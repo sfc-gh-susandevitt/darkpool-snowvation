@@ -162,8 +162,8 @@ if pricing==True:
             df = cur.fetch_pandas_all()
             col1,col2,col3 = st.columns(3)
             col1.metric("Increased Accuracy", "47%")
-            col2.metric("Rows",1000023)
-            col3.metric("Price",1000)
+            col2.metric("Rows","1,000,023")
+            col3.metric("Price","$1,000))
             st.dataframe(df)
 if pricing==False:
     def run_query(query):
