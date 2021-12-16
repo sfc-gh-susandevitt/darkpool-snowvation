@@ -159,7 +159,7 @@ st.header("Auto-boost your model?")
 boost = st.radio("",('Off','On'),index=0,key='boost')
 if 'key' not in st.session_state:
     st.session_state['key']=boost
-    st.write(st.session_state.key)
+st.write(st.session_state.key)
 
 if boost=='On':
     def run_query(query):
@@ -178,7 +178,6 @@ if boost=='Off':
         with conn.cursor() as cur:
             cur.execute(query)
             
-st.write(st.session_state.key)
             
             
         
