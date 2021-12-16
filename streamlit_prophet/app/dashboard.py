@@ -61,29 +61,24 @@ config, instructions, readme = load_config(
 dates: Dict[Any, Any] = dict()
 report: List[Dict[str, Any]] = []
 
+#Logo
+st.image(load_image("darkpool.png"), use_column_width=True)
+    
+
 # Info
 with st.expander("What is darkpool?", expanded=False):
     st.write(readme["app"]["app_intro"])
     st.write("")
 st.write("")
-st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
-#display_links(readme["links"]["repo"],readme["links"]["repo"])
 
-#Snowflake Connection
-#!/usr/bin/env python3
-
-# Initialize connection.
-# Uses st.cache to only run once.
 
 # Headers   
 
 st.header("Your Selections")
 
-#Sidebar
-
-st.sidebar.title("Configure your analysis")
-st.sidebar.caption("Snowflake Account = SNOWCAT2")
-st.sidebar.caption("Snowflake Database = DEMAND")
+st.title("Configure your analysis")
+st.caption("Snowflake Account = SNOWCAT2")
+st.caption("Snowflake Database = DEMAND")
 
 
 def init_connection():
@@ -102,7 +97,7 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        option = st.sidebar.selectbox('Select your dataset', df)
+        option = st.selectbox('Select your dataset', df)
         text1 = "select COLUMN_NAME from DEMAND1.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
         #text2 = "DEMAND.DATA.CUSTOMERS"
         text2 = option
@@ -118,7 +113,7 @@ def run_query2(query_text):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        option2 = st.sidebar.selectbox('Select your dependent variable', df)
+        option2 = st.selectbox('Select your dependent variable', df)
         if option2:
             st.write('You have selected dependent variable ',option2)
         #st.write(option)       
