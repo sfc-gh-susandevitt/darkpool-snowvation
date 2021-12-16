@@ -157,8 +157,7 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 
 st.header("Auto-boost your model?")
 boost = st.radio("",('Off','On'),index=0,key='boost')
-if 'key' not in st.session_state:
-    st.session_state['key']=boost
+st.session_state['key']=boost
 st.write(st.session_state.key)
 
 if boost=='On':
