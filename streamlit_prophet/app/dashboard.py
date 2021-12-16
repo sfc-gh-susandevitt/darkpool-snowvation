@@ -166,8 +166,8 @@ if pricing==True:
             col3.metric("Price","$1,000")
             st.dataframe(df)
             accuracy ='"'+df['INCREASED_ACCURACY']+'"'
-            st.write(accuracy)
-            st.metric("Increased Accuracy",value = accuracy )
+            aw = st.write(accuracy)
+            st.metric("Increased Accuracy",value = aw )
 if pricing==False:
     def run_query(query):
         with conn.cursor() as cur:
