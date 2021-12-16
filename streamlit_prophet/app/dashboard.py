@@ -160,7 +160,7 @@ if pricing==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            st.metric(label="Price", value=df["PRICE"])
+            st.metric(label="Price", value="$1000",delta=df[2])
             st.dataframe(df)
 if pricing==False:
     def run_query(query):
