@@ -171,6 +171,14 @@ if analyze==True:
             #st.write(auc)
             #st.bar_chart()
             #
+
+            c = alt.Chart(df).mark_bar().encode(
+                x='TRAINING_JOB', y='AUC', size='c', color='c', tooltip=['a', 'b', 'c'])
+
+            st.altair_chart(c, use_container_width=True)
+            
+            
+            
             
 if analyze==False:
     def run_query(query):
