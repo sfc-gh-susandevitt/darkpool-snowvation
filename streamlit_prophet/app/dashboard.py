@@ -79,7 +79,8 @@ st.header("Your Selections")
 #Sidebar
 
 st.sidebar.title("Configure your analysis")
-st.sidebar.caption("Snowflake Database = SNOWCAT2")
+st.sidebar.caption("Snowflake Account = SNOWCAT2")
+st.sidebar.caption("Snowflake Database = DEMAND")
 
 
 def init_connection():
