@@ -155,7 +155,7 @@ if analyze==False:
                 
 
 
-run_query("select distinct TRAINING_JOB, AUC, AUC-(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline')  as POINTS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+run_query("select distinct TRAINING_JOB, AUC, AUC-(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline')  as POINTS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB not in 'baseline';")
 
 
 # Show Price
