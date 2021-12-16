@@ -146,9 +146,9 @@ st.write("")
 
 st.header("Auto-boost your models?")
 # Launch analysis
-#with st.sidebar.expander("Boost", expanded=True):
+#with st.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
-analysis = st.sidebar.radio ("",('Off','On'))
+analysis = st.radio ("",('Off','On'))
 if analysis == 'Off': 
     st.write('You selected ML analysis on your own data set only.')
 if analysis == 'On': 
