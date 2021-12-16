@@ -161,7 +161,8 @@ if pricing==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             col1,col2,col3 = st.columns(3)
-            col1.metric("Increased Accuracy", "47%")
+            #col1.metric("Increased Accuracy", "47%")
+            col1.metric("Increased Accuracy", df['INCREASED_ACCURACY'])
             col2.metric("Rows","1,000,023")
             col3.metric("Price","$1,000")
             st.dataframe(df)
