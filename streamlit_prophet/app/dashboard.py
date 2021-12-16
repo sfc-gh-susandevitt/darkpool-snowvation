@@ -161,7 +161,7 @@ if analyze==True:
             job=df["TRAINING_JOB"].astype(str)
             acc=df["INCREASED_ACCURACY"].astype(str)
             source=df
-            base=alt.CHART(source).encode(x=job)
+            base=alt.Chart(source).encode(x=job)
             bar=base.mark_bar().encode(y=auc)
             line=base.mark_line(color='red').encode(y=acc)
             (bar + line).properties(width=600)
