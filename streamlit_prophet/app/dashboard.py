@@ -210,10 +210,12 @@ if st.button('Run Inference'):
         df = cur.fetch_pandas_all()
         st.write("You have paid $277 for at 27.7 point accuracy boost in your inference model.  See a sample of your inferenced data here:")
         st.write(df)
+        st.subheader("Revenue Sharing")
+        st.image(load_image("image.png"), use_column_width=True)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
 
 st.subheader("Revenue Sharing")
-st.expander.image(load_image("image.png"), use_column_width=True)
+st.image(load_image("image.png"), use_column_width=True)
 
 
