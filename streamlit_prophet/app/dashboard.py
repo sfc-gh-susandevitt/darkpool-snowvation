@@ -132,9 +132,12 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
-st.subheader("Analyze Boost?")
+st.subheader("Analyze Potential Boost?")
 st.write("")
+st.button("Yes, Analyze Boost")
 
+st.header("Potential Accuracy Boost for Your Dataset")
+st.write("")
 
 st.header("Auto-boost your models?")
 # Launch analysis
@@ -151,8 +154,7 @@ if analysis == 'On':
 #   st.write('You selected ML analysis on your own data set only.')
     
     
-st.header("Potential Accuracy Boost for Your Dataset")
-st.write("")
+
 
 
         
