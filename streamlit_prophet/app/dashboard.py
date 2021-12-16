@@ -139,12 +139,7 @@ if analyze=='Analyze':
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
-            
-
-analyze = st.button(label="Clear Analysis",key='clear')
-
-if analyze=='Clear Analysis':
-    st.write('Click Analyze to run analysis')
+ 
             
 
 #run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
