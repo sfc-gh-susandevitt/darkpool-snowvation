@@ -175,11 +175,7 @@ if pricing==True:
             col1,col2= st.columns(2)
             col1.metric("Boost Points","27.7")
             col2.metric("Your Price","$277")
-#            st.write("TESTING HERE:")
-#            st.dataframe(df)
-#            accuracy ='"'+df['INCREASED_ACCURACY']+'"'
-#            aw = st.write(accuracy)
-#            st.metric("Increased Accuracy",value = aw )
+
 if pricing==False:
     def run_query(query):
         with conn.cursor() as cur:
@@ -212,7 +208,7 @@ if st.button('Run Inference'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
-        st.write("You have paid $277 for at 27.7 point accuracy boost in your inference model.  See a sample of your inferenced data here:"
+        st.write("You have paid $277 for at 27.7 point accuracy boost in your inference model.  See a sample of your inferenced data here:")
         st.write(df)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
