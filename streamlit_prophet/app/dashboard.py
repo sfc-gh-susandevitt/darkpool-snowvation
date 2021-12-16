@@ -161,8 +161,9 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #             cur.execute(query)
 
 analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
+
 def analyzefunction():
-        st.write('Clicked')
+    st.write('Clicked')
         
 
 
