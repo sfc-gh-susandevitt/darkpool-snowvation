@@ -133,6 +133,7 @@ st.subheader("Analyze potential boost?")
 analyze = st.radio("",('Off','On'),index=0,key='analyze')
 
 if analyze=='On':
+    st.balloons()
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
