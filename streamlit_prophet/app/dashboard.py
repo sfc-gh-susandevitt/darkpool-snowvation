@@ -131,7 +131,7 @@ if st.button('Run Baseline Analysis'):
 
 ## Add column + line chart 
 
-st.header("Analyze Potential Boost")
+st.subheader("Analyze Potential Boost")
 analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
 if analyze==True:
@@ -160,7 +160,7 @@ run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC fr
 
 # Show Price
 
-st.header("Pricing Model")
+st.subheader("Pricing Model")
 
 pricing = st.checkbox("Show me my pricing model",value=False,key='analyze')
 
@@ -191,7 +191,7 @@ run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, con
 
 # Execute Boost
 
-st.header("Auto-Boost Your Model")
+st.subheader("Auto-Boost Your Model")
 
 boost=st.checkbox("Auto-boost my model",value=False,key='boost')
 if boost==True:
