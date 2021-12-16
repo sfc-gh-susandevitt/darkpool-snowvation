@@ -148,8 +148,8 @@ if analyze=='On':
             cur.execute(query)
 
             # Return a Pandas DataFrame containing all of the results.
-            df = cur.fetch_pandas_all()
-            st.dataframe(df)
+            df3 = cur.fetch_pandas_all()
+            st.dataframe(df3)
 else: 
     st.write("")    
 
