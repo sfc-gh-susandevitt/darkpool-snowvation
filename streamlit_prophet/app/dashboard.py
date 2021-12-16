@@ -161,11 +161,12 @@ st.header("Analyze Potential Boost")
 #         with conn.cursor() as cur:
 #             cur.execute(query)
 
-analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
-
 def analyzefunction():
     st.write('Clicked')
         
+analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
+
+
 
 
 
