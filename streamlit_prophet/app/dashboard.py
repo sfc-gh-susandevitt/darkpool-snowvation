@@ -123,9 +123,9 @@ if st.button('Run Baseline Analysis'):
         baseline = df["AUC"]
         st.write(baseline)
 
-run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
+#run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
-
+  run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")    
 
 #Analyze boost
 
