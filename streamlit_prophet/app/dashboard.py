@@ -156,8 +156,8 @@ if analyze==True:
             df = cur.fetch_pandas_all()
             st.dataframe(df)
             auc=df["AUC"].astype(str)
-            job=df["TRAINING_JOB"]
-            acc=df["INCREASED_ACCURACY"]
+            job=df["TRAINING_JOB"].astype(str)
+            acc=df["INCREASED_ACCURACY"].astype(str)
             chart_data = [job,auc,acc] 
             #st.write(auc)
             st.bar_chart(auc)
@@ -172,8 +172,8 @@ if analyze==False:
 
             
 
-run_query("select distinct INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select distinct to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
-#run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+#run_query("select distinct INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select distinct to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
+run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 # Show Price
 
 st.header("Pricing Model")
