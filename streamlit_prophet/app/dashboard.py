@@ -132,7 +132,7 @@ st.header("Analyze Potential Boost")
 #analyze = st.button(label="Analyze",key='analyze')
 
 if st.button('Analyze'):
-    def run_query3(query):
+    def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
             # Return a Pandas DataFrame containing all of the results.
@@ -143,7 +143,7 @@ if st.button('Analyze'):
 else:
     st.write("")
     
-run_query3("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
 
              
