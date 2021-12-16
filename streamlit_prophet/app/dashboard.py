@@ -120,7 +120,7 @@ def run_query(query):
     text3 = "' order by 1 asc;"        
     query_text = text1+text2+text3
 
- run_query(query_text)  
+    run_query(query_text)  
 
 
 #Analyze boost
