@@ -129,7 +129,7 @@ def run_query(query):
 
 st.header("Analyze Potential Boost")
 
-analyze = st.button(label="Analyze",key='analyze')
+#analyze = st.button(label="Analyze",key='analyze')
 
 if st.button('Analyze'):
     def run_query(query):
