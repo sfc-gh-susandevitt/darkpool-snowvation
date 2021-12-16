@@ -145,7 +145,7 @@ if analyze==False:
             cur.execute(query)
             
 
-run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;;") 
+run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
 # Show Price
 
@@ -171,7 +171,7 @@ if pricing==False:
         with conn.cursor() as cur:
             cur.execute(query)
             
-run_query("select sum(SUPPLIER_REV_$) as PRICE, INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select  to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
+run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, concat(cast(cast(INCREASED_ACCURACY*100 as numeric)as varchar), '%') as INCREASED_ACCURACY,cast(TOTAL_ROWS as varchar) as TOTAL_ROWS from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT join (select  to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY, TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'boost_all') group by 2,3;") 
 
 
 
