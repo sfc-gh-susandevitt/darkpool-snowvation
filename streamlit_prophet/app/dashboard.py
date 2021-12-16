@@ -151,7 +151,7 @@ run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC fr
 
 st.header("Pricing Model")
 
-pricing = st.checkbox("Show me my pricing model",value=False,key='analyze')
+pricing = st.checkbox("Show me my pricing model",value=False,key='price')
 
 if pricing==True:
     def run_query(query):
