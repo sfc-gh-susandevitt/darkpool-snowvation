@@ -123,12 +123,20 @@ run_query(query_text)
 st.sidebar.header("Auto-boost your models?")
 
 # Launch analysis
-if st.sidebar.button ('Off'):
-   st.write('You selected ML analysis on your own data set only.')
-if st.sidebar.button ('On'):
-   st.write('You selected to boost your ML accuracy with data from the dark pool.')
+#if st.sidebar.button ('Off'):
+#   st.write('You selected ML analysis on your own data set only.')
+#if st.sidebar.button ('On'):
+#   st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
+# Launch analysis
+#with st.sidebar.expander("Boost", expanded=True):
+#    st.write("Choose the data sets for your analysis:")
+    analysis = st.sidebar.radio ("",('Off','On'))
+    if analysis == 'Own Set': 
+        st.write('You selected ML analysis on your own data set only.')
+    if analysis == 'BOOST': 
+        st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
 # Visualizations        
