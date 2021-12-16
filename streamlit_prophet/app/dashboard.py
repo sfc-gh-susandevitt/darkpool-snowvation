@@ -62,7 +62,7 @@ dates: Dict[Any, Any] = dict()
 report: List[Dict[str, Any]] = []
 
 #Logo
-st.image(load_image("darkpool.png"), use_column_width=True)
+st.image(load_image("darkpoolwhite.png"), use_column_width=True)
     
 
 # Info
