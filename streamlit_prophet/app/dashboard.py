@@ -103,7 +103,7 @@ def run_query(query):
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         option = st.sidebar.selectbox('Select your dataset', df)
-        text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
+        text1 = "select COLUMN_NAME from DEMAND1.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
         #text2 = "DEMAND.DATA.CUSTOMERS"
         text2 = option
         text3 = "' order by 1 asc;"   
