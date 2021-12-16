@@ -113,20 +113,11 @@ st.sidebar.caption("Boost Selection")
 
 # Launch analysis
 if st.sidebar.button ('No Boost'):
-   st.write('You selected ML analysis on your own data set only.')
+   st.sidebar.write('You selected ML analysis on your own data set only.')
 if st.sidebar.button ('Boost!'):
-   st.write('You selected to boost your ML accuracy with data from the dark pool.')
+   st.sidebar.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
-
-# Launch analysis
-with st.sidebar.expander("Boost", expanded=True):
-#    st.write("Choose the data sets for your analysis:")
-    analysis = st.radio ("Choose the data sets for your analysis:",('Own Set','BOOST'))
-    if analysis == 'Own Set': 
-        st.write('You selected ML analysis on your own data set only.')
-    if analysis == 'BOOST': 
-        st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
 # Visualizations        
