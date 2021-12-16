@@ -176,7 +176,7 @@ if boost=='Off':
             
         
 
-run_query("select to_json(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
+run_query("select to_string(TRAIN_OUT) as MODEL from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
 
 
 
