@@ -4,6 +4,7 @@ import streamlit as st
 import snowflake.connector
 import plotly.figure_factory as ff
 import numpy as np
+import altair as alt
 
 from streamlit_prophet.lib.dataprep.clean import clean_df
 from streamlit_prophet.lib.dataprep.format import (
@@ -155,12 +156,18 @@ if analyze==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
+
             auc=df["AUC"].astype(str)
             job=df["TRAINING_JOB"].astype(str)
             acc=df["INCREASED_ACCURACY"].astype(str)
-            chart_data = [job,auc,acc] 
+            source=df
+            base=alt.CHART(source).encode(x=job)
+            bar=base.mark_bar().encode(y=auc)
+            line=base.mark_line(color='red').encode(y=acc)
+            (bar + line).properties(width=600)
+            #chart_data = [job,auc,acc] 
             #st.write(auc)
-            st.bar_chart(auc)
+            st.bar_chart()
             #st.bar_chart(chart_data)
 if analyze==False:
     def run_query(query):
