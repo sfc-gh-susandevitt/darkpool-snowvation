@@ -236,7 +236,8 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 
 
 if st.button('Run Inference'):
-    st.spinner(text="In progress...")
+    wtih st.spinner(text="In progress..."):
+        time.sleep(5)
     def run_query(query_text):
         with conn.cursor() as cur:
             cur.execute(query_text)      
