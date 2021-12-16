@@ -134,10 +134,10 @@ run_query(query_text)
 
 st.subheader("Analyze Potential Boost?")
 st.write("")
-st.button("Yes, Analyze Boost")
+st.button("Yes")
 
-if st.button ('Yes, Analyze Boost'):
-    st.write("Potential Accuracy Boost for Your Dataset")
+if st.button ('Yes'):
+    st.write('Potential Accuracy Boost for Your Dataset')
     st.write("")
 
 st.header("Auto-boost your models?")
