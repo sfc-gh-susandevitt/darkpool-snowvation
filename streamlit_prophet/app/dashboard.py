@@ -50,7 +50,7 @@ from streamlit_prophet.lib.models.prophet import forecast_workflow
 from streamlit_prophet.lib.utils.load import load_config, load_image
 
 # Page config
-st.set_page_config(page_title="darkpool", layout="centered")
+st.set_page_config(page_title="darkpool")
 
 # Load config
 config, instructions, readme = load_config(
@@ -62,7 +62,7 @@ dates: Dict[Any, Any] = dict()
 report: List[Dict[str, Any]] = []
 
 #Logo
-st.image(load_image("darkpoolwhite.png"), use_column_width=True)
+st.image(load_image("Darkpoolwhite.png"), use_column_width=True)
     
 
 # Info
