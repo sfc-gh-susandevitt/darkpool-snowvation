@@ -135,20 +135,21 @@ run_query(query_text)
 #Analyze boost
 st.subheader("Analyze potential boost?")
 st.write("")
+analyze = st.button('Analyze')
 
-with st.expander("Click here for boost analysis",expanded=False):
-    st.write("Here is your boost analysis:")
-## Add chart
-
-
-
-
-
-
+## Add column + line chart
 
 # Boost
 st.header("Auto-boost your models?")
-boost=st.button('Yes')
+boost=st.button('Boost')
+
+## Add table/dataframe of results
+
+
+
+
+
+
 
 
 
@@ -167,7 +168,8 @@ boost=st.button('Yes')
 #if st.sidebar.button ('Off'):
 #   st.write('You selected ML analysis on your own data set only.')
     
-    
+#with st.expander("Click here for boost analysis",expanded=False):
+#    st.write("Here is your boost analysis:")
 
 
 
