@@ -120,9 +120,8 @@ if st.button('Run Baseline Analysis'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
-        baseline = df.loc[0]
+        baseline = df["AUC"]
         st.write(baseline)
-        st.metric("BASE",value=baseline)
 
     run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
