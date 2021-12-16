@@ -141,7 +141,7 @@ if analyze==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            base = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='AUC')
+            base = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='POINTS')
             st.altair_chart(base, use_container_width=True)
             st.dataframe(df)
 
@@ -155,7 +155,7 @@ if analyze==False:
                 
 
 
-run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+run_query("select distinct TRAINING_JOB, AUC, AUC-(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline')  as POINTS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
 
 # Show Price
