@@ -172,9 +172,7 @@ if analyze==True:
             #st.bar_chart()
             #
 
-            c = alt.Chart(df).mark_bar().encode(
-                x='TRAINING_JOB', y='AUC', size='c', color='c', tooltip=['a', 'b', 'c'])
-
+            c = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='AUC')
             st.altair_chart(c, use_container_width=True)
             
             
