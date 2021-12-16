@@ -135,12 +135,13 @@ run_query(query_text)
 #Analyze boost
 st.subheader("Analyze potential boost?")
 st.write("")
-analyze = st.button("Analyze")
+analyzeon = st.button("On")
+analyzeoff = st.button("Off")
 
 
 #Select Table
 
-if analyze==True:
+if analyzeon==True:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -153,6 +154,8 @@ if analyze==True:
 ## Add column + line chart 
 run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
+if analyzeoff==True:
+    st.write("")    
 
 
 
