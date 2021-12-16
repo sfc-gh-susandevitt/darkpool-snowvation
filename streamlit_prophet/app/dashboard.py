@@ -133,9 +133,9 @@ st.sidebar.header("Auto-boost your models?")
 #with st.sidebar.expander("Boost", expanded=True):
 #    st.write("Choose the data sets for your analysis:")
 analysis = st.sidebar.radio ("",('Off','On'))
-if analysis == 'Own Set': 
+if analysis == 'Off': 
     st.write('You selected ML analysis on your own data set only.')
-if analysis == 'BOOST': 
+if analysis == 'On': 
     st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
