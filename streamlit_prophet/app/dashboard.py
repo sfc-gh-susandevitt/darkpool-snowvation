@@ -124,9 +124,9 @@ st.sidebar.caption("Boost Selection")
 
 # Launch analysis
 if st.sidebar.button ('No Boost'):
-   st.sidebar.write('You selected ML analysis on your own data set only.')
+   st.write('You selected ML analysis on your own data set only.')
 if st.sidebar.button ('Boost!'):
-   st.sidebar.write('You selected to boost your ML accuracy with data from the dark pool.')
+   st.write('You selected to boost your ML accuracy with data from the dark pool.')
         
 
         
