@@ -75,8 +75,8 @@ st.write("")
 # Headers   
 
 st.title("Configure your analysis")
-st.caption("Snowflake Account = SNOWCAT2")
-st.caption("Snowflake Database = DEMAND")
+st.subheader("Snowflake Account = SNOWCAT2")
+st.subheader("Snowflake Database = DEMAND")
 
 
 def init_connection():
