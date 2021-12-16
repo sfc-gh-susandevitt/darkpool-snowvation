@@ -105,7 +105,7 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 
 #Select Dependent Variable
 
-def run_query(query):
+def run_query2(query):
     with conn.cursor() as cur:
         cur.execute(query)
 
@@ -120,7 +120,7 @@ def run_query(query):
     text3 = "' order by 1 asc;"        
     query_text = text1+text2+text3
 
-    run_query(query_text)  
+    run_query2(query_text)  
 
 
 #Analyze boost
@@ -132,7 +132,7 @@ st.header("Analyze Potential Boost")
 #analyze = st.button(label="Analyze",key='analyze')
 
 if st.button('Analyze'):
-    def run_query(query):
+    def run_query3(query):
         with conn.cursor() as cur:
             cur.execute(query)
             # Return a Pandas DataFrame containing all of the results.
@@ -143,7 +143,7 @@ if st.button('Analyze'):
 else:
     st.write("")
     
-run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+run_query3("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
 
              
