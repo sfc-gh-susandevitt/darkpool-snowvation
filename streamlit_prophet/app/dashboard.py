@@ -127,12 +127,10 @@ run_query(query_text)
 
 #Analyze boost
 
+## Add column + line chart 
+
 st.subheader("Analyze potential boost?")
 analyze = st.radio("",('Off','On'),index=0)
-
-
-
-#Select Table
 
 if analyze=='On':
     def run_query(query):
@@ -147,19 +145,18 @@ if analyze=='Off':
         with conn.cursor() as cur:
             cur.execute(query)
             
-## Add column + line chart 
+
 run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
 
 
 
+# Execute Boost
 
-
-# Boost
 st.header("Auto-boost your model?")
 boost = st.radio("",('Off','On'),index=0)
 
-## Add table/dataframe of results
+
 if boost=='On':
     def run_query(query):
         with conn.cursor() as cur:
