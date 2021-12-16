@@ -167,7 +167,7 @@ if pricing==True:
             st.dataframe(df)
             accuracy ='"'+df['INCREASED_ACCURACY']+'"'
             st.write(accuracy)
-            st.metric("Increased Accuracy",value = st.write(accuracy) )
+            st.metric("Increased Accuracy",value = print(accuracy) )
 if pricing==False:
     def run_query(query):
         with conn.cursor() as cur:
