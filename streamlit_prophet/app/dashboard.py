@@ -164,6 +164,7 @@ if pricing==True:
             col1.metric("Increased Accuracy", "47%")
             col2.metric("Rows","1,000,023")
             col3.metric("Price","$1,000")
+            st.write("TESTING HERE:")
             st.dataframe(df)
             accuracy ='"'+df['INCREASED_ACCURACY']+'"'
             aw = st.write(accuracy)
