@@ -155,6 +155,8 @@ if analyze==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
+#             base = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='AUC')
+#             st.altair_chart(base, use_container_width=True)
             st.dataframe(df)
 #             auc=df["AUC"].astype(str)
 #             job=df["TRAINING_JOB"].astype(str)
