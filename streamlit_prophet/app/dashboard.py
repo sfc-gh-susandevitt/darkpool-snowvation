@@ -108,8 +108,9 @@ def run_query(query):
         option = st.sidebar.selectbox('Select your dependent variable', df)
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-text2 = "' order by 1 asc;"
-text3 = "DEMAND.DATA.CUSTOMERS"
+text2 = "DEMAND.DATA.CUSTOMERS"
+text3 = "' order by 1 asc;"
+
 query_text = text1+text2+text3
 run_query(query_text)    
  
