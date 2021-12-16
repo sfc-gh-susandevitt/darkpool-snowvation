@@ -135,7 +135,9 @@ run_query(query_text)
 #Analyze boost
 st.subheader("Analyze potential boost?")
 st.write("")
-analyze = st.button('Analyze')
+analyze = st.button("Analyze?")
+if analyze:
+    st.button("Yes, Analyze")
 
 #Select Table
 
