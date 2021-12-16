@@ -221,23 +221,32 @@ run_query("select concat('$',cast(sum(SUPPLIER_REV_$) as varchar) )as PRICE, con
 st.header("Auto-Boost Your Model")
 
 boost=st.checkbox("Auto-boost my model",value=False,key='boost')
-
-#if boost=='On':
 if boost==True:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
+    def run_query3(query_text):
+    with conn.cursor() as cur:
+        cur.execute(query_text)      
+        df = cur.fetch_pandas_all()
+        option3 = st.selectbox('Select your dataset for inference', df)
+         
+        
+run_query3("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-            # Return a Pandas DataFrame containing all of the results.
-            df = cur.fetch_pandas_all()
-            st.dataframe(df)
-            st.write(df)
-if boost==False:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
+# #if boost=='On':
+# if boost==True:
+#     def run_query(query):
+#         with conn.cursor() as cur:
+#             cur.execute(query)
+
+#             # Return a Pandas DataFrame containing all of the results.
+#             df = cur.fetch_pandas_all()
+#             st.dataframe(df)
+#             st.write(df)
+# if boost==False:
+#     def run_query(query):
+#         with conn.cursor() as cur:
+#             cur.execute(query)
                       
-run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
+# run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
 
 
