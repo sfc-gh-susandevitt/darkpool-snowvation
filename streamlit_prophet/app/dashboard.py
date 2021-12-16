@@ -86,9 +86,6 @@ conn = init_connection()
 
 #Select Table
 
-
-
-
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
@@ -118,7 +115,17 @@ def run_query2(query_text):
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
- 
+if st.button('Run Baseline Analysis'):
+    def run_query(query_text2):
+      with conn.cursor() as cur:
+        cur.execute(query_text2)      
+        df = cur.fetch_pandas_all()
+        st.write(df)
+        baseline = df['AUC']
+        st.write(baseline)
+
+    run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG;")            
+
 
 
 #Analyze boost
