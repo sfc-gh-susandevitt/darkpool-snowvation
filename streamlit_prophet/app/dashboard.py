@@ -129,13 +129,12 @@ def run_query2(query):
 
 st.header("Analyze Potential Boost")
 
-#analyze = st.button(label="Analyze",key='analyze')
+st.button(label="Analyze",key='analyze')
 
 if st.button('Analyze'):
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
-            # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
