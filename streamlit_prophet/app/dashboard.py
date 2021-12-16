@@ -126,18 +126,6 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #Select Dependent Variable
  
 
-
-#if option:
-#     text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-#     #text2 = "DEMAND.DATA.CUSTOMERS"
-#     text2 = option
-#     text3 = "' order by 1 asc;"   
-#     query_text = text1+text2+text3
-#     st.write(query_text)
-
-    #run_query(query_text)  
-
-
 #Analyze boost
 
 # ## Add column + line chart 
