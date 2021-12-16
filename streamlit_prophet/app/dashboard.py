@@ -74,8 +74,6 @@ st.write("")
 
 # Headers   
 
-st.header("Your Selections")
-
 st.title("Configure your analysis")
 st.caption("Snowflake Account = SNOWCAT2")
 st.caption("Snowflake Database = DEMAND")
@@ -114,8 +112,8 @@ def run_query2(query_text):
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
         option2 = st.selectbox('Select your dependent variable', df)
-        if option2:
-            st.write('You have selected dependent variable ',option2)
+        #if option2:
+        #    st.write('You have selected dependent variable ',option2)
         #st.write(option)       
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
