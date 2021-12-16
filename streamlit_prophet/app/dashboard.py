@@ -74,7 +74,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 
 # Headers   
 
-st.header("Your selections:")
+st.header("Your Selections:")
 st.write("")
 
 
@@ -132,16 +132,9 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
-
-# Launch analysis
-#if st.sidebar.button ('Off'):
-#   st.write('You selected ML analysis on your own data set only.')
-#if st.sidebar.button ('On'):
-#   st.write('You selected to boost your ML accuracy with data from the dark pool.')
-        
-
-st.header("Potential Accuracy Boost for Your Dataset")
+st.subheader("Analyze Boost?")
 st.write("")
+
 
 st.header("Auto-boost your models?")
 # Launch analysis
@@ -152,6 +145,16 @@ if analysis == 'Off':
     st.write('You selected ML analysis on your own data set only.')
 if analysis == 'On': 
     st.write('You selected to boost your ML accuracy with data from the dark pool.')
+        
+# Launch analysis
+#if st.sidebar.button ('Off'):
+#   st.write('You selected ML analysis on your own data set only.')
+    
+    
+st.header("Potential Accuracy Boost for Your Dataset")
+st.write("")
+
+
         
 
 
