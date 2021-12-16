@@ -172,8 +172,8 @@ if analyze==True:
             #st.bar_chart()
             #
 
-            c = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='AUC',y='INCREASED_ACCURACY)
-            st.altair_chart(c, use_container_width=True)
+            base = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='AUC')
+            st.altair_chart(base, use_container_width=True)
             
             
             
