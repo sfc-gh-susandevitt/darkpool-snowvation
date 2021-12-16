@@ -169,7 +169,7 @@ if boost=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-     st.write(st.session_state.key)
+
 #turn balloons only when CLICK IS clicked to yes
 #if boost=='On':
 #    st.balloons()
@@ -177,7 +177,8 @@ if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
-        st.write(st.session_state.key)
+            
+st.write(st.session_state.key)
             
             
         
