@@ -5,8 +5,7 @@ ML models.  The economic return will be shared with the dark pool data owners.
 All you have to do is:
 * __Select your dataset__: Choose your dataset.
 * __Select your outcome variable__: Choose your dependent variable for ML prediction.
-* __Run your analysis__: Run your ML model on solely your set of data. 
-* __Boost your analysis__: Select BOOST to increase the acccuracy of your ML model by provisioning data sets from the dark pool. 
+* __Boost your analysis__: Turn on Auto-boost to increase the acccuracy of your ML model by provisioning data sets from the dark pool. 
  \n
 """
 
