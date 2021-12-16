@@ -132,16 +132,17 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
+
 #Analyze boost
 st.subheader("Analyze potential boost?")
 st.write("")
-analyzeon = st.button("On")
-analyzeoff = st.button("Off")
+analyze = st.radio("",('Off','On')
+
 
 
 #Select Table
 
-if analyzeon==True:
+if analyze=='On':
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -154,7 +155,7 @@ if analyzeon==True:
 ## Add column + line chart 
 run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
-if analyzeoff==True:
+else: 
     st.write("")    
 
 
