@@ -120,7 +120,7 @@ if st.button('Run Baseline Analysis'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
-        baseline = df['AUC']
+        baseline = df['AUC'].astype(str)
         st.write(baseline)
         st.metric(label = "Baseline", value=baseline)
 
