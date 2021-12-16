@@ -132,6 +132,10 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
+#Analyze boost
+st.subheader("Analyze potential boost?")
+st.write("")
+
 with st.expander("Analyze Potential Boost",expanded=False):
     st.write("Here is your boost analysis:")
 
@@ -139,6 +143,7 @@ with st.expander("Analyze Potential Boost",expanded=False):
 
 
 
+# Boost
 st.header("Auto-boost your models?")
 # Launch analysis
 #with st.expander("Boost", expanded=True):
