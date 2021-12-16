@@ -135,7 +135,7 @@ if analyze=='Analyze':
         with conn.cursor() as cur:
             cur.execute(query)
 
-            run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
+run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
