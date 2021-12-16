@@ -5,6 +5,7 @@ import snowflake.connector
 import plotly.figure_factory as ff
 import numpy as np
 import altair as alt
+from vega_datasets import data
 
 from streamlit_prophet.lib.dataprep.clean import clean_df
 from streamlit_prophet.lib.dataprep.format import (
@@ -157,19 +158,31 @@ if analyze==True:
             df = cur.fetch_pandas_all()
             st.dataframe(df)
 
-            auc=df["AUC"]
-            job=df["TRAINING_JOB"]
-            acc=df["INCREASED_ACCURACY"]
-            source=[job,auc,acc] 
-            st.altair_chart(base,use_container_width=True)
-            base=alt.Chart(source).encode(x=job:O)
-            bar=base.mark_bar().encode(y=auc:Q)
-            line=base.mark_line(color='red').encode(y=acc:Q)
+            source = data.wheat()
+            base = alt.Chart(source).encode(x='year:O')
+            bar = base.mark_bar().encode(y='wheat:Q')
+            line =  base.mark_line(color='red').encode(
+            y='wages:Q'
+            )
             (bar + line).properties(width=600)
+            
+            
+            
+            
+#             auc=df["AUC"]
+#             job=df["TRAINING_JOB"]
+#             acc=df["INCREASED_ACCURACY"]
+#             source=[job,auc,acc] 
+#             st.altair_chart(base,use_container_width=True)
+#             base=alt.Chart(source).encode(x=job:O)
+#             bar=base.mark_bar().encode(y=auc:Q)
+#             line=base.mark_line(color='red').encode(y=acc:Q)
+#             (bar + line).properties(width=600)
             #chart_data = [job,auc,acc] 
             #st.write(auc)
             #st.bar_chart()
             #st.bar_chart(chart_data)
+            
 if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
