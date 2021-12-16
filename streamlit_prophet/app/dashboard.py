@@ -118,20 +118,7 @@ def run_query2(query_text):
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-
-#Select Dependent Variable
  
-
-
-#if option:
-#     text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-#     #text2 = "DEMAND.DATA.CUSTOMERS"
-#     text2 = option
-#     text3 = "' order by 1 asc;"   
-#     query_text = text1+text2+text3
-#     st.write(query_text)
-
-    #run_query(query_text)  
 
 
 #Analyze boost
@@ -235,12 +222,11 @@ if boost==False:
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
 
-    if st.button('Run Inference'):
-        def run_query(query_text):
-            with conn.cursor() as cur:
-                cur.execute(query_text)      
-                df = cur.fetch_pandas_all()
-                st.write(df)
+if st.button('Run Inference'):
+    def run_query(query_text2):
+      with conn.cursor() as cur:
+        cur.execute(query_text2)      
+        df = cur.fetch_pandas_all()
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
             
