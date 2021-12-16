@@ -73,7 +73,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Uses st.cache to only run once.
 
 st.sidebar.title("Configure your analysis")
-st.sidebar.subheader("Snowflake Database = SNOWCAT2")
+st.sidebar.caption("Snowflake Database = SNOWCAT2")
 
 #add these back in
 def init_connection():
@@ -120,7 +120,7 @@ run_query(query_text)
 
   
  
-st.sidebar.caption("Auto-boost your models?")
+st.sidebar.header("Auto-boost your models?")
 
 # Launch analysis
 if st.sidebar.button ('Off'):
