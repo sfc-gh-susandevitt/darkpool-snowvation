@@ -160,7 +160,6 @@ boost = st.radio("",('Off','On'),index=0,key='boost')
 
 
 if boost=='On':
-    st.balloons()
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -168,6 +167,7 @@ if boost=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(data=df,width=500,height=500)
+            st.balloons()
 if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
