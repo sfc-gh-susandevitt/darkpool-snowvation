@@ -140,7 +140,7 @@ if st.button('Analyze'):
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
-  else:
+else:
     st.write("")
     
 run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
