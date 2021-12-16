@@ -130,9 +130,9 @@ run_query(query_text)
 ## Add column + line chart 
 
 st.header("Analyze potential boost?")
-analyze = st.radio("",('Off','On'),index=0,key='analyze')
+analyze = st.checkbox("Auto-boost!",value=False,key='analyze')
 
-if analyze=='On':
+if analyze==True:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -142,7 +142,7 @@ if analyze=='On':
             st.dataframe(df)
           #  chart_data = (df[['TRAINING_JOB','AUC']])
           #  st.bar_chart(chart_data)
-if analyze=='Off':
+if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
