@@ -140,26 +140,32 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 
 #Analyze boost
 
-## Add column + line chart 
+# ## Add column + line chart 
 
-st.header("Analyze Potential Boost")
-analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
+ st.header("Analyze Potential Boost")
+# analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
-if analyze==True:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
+# if analyze==True:
+#     def run_query(query):
+#         with conn.cursor() as cur:
+#             cur.execute(query)
 
-            # Return a Pandas DataFrame containing all of the results.
-            df = cur.fetch_pandas_all()
-            st.dataframe(df)
-          #  chart_data = (df[['TRAINING_JOB','AUC']])
-          #  st.bar_chart(chart_data)
-if analyze==False:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
-            
+#             # Return a Pandas DataFrame containing all of the results.
+#             df = cur.fetch_pandas_all()
+#             st.dataframe(df)
+#           #  chart_data = (df[['TRAINING_JOB','AUC']])
+#           #  st.bar_chart(chart_data)
+# if analyze==False:
+#     def run_query(query):
+#         with conn.cursor() as cur:
+#             cur.execute(query)
+
+analyze = st.button("Show Accuracy",key='analyze',on_click=analyzefunction())
+def analyzefunction():
+        st.write('Clicked')
+        
+
+
 
 #run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 run_query("select distinct INDEX, TRAINING_JOB, AUC, AUC/(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;")
