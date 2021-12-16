@@ -138,7 +138,7 @@ st.write("")
 analyze = st.button('Analyze')
 
 #Select Table
-## Add column + line chart
+
 
 def run_query(query):
     with conn.cursor() as cur:
@@ -146,8 +146,12 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        st.dataframe(df)
- 
+        if analyze=='Yes':
+            st.dataframe(df)
+        else:
+            st.write("")
+
+## Add column + line chart 
 run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
 
