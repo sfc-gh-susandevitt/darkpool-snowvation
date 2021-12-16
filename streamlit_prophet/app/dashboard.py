@@ -111,15 +111,17 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        option2 = st.sidebar.selectbox('Select your dependent variable', df)
-        st.write('You have selected dependent variable ',option2)
+        option = st.sidebar.selectbox('Select your dependent variable', df)
+        st.write('You have selected dependent variable ',option)
+        st.write(option)
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
 #text2 = "DEMAND.DATA.CUSTOMERS"
 text2 = option
-text3 = "' order by 1 asc;"        
+text3 = "' order by 1 asc;"   
 query_text = text1+text2+text3
-run_query(query_text)  
+st.write(query_text)
+#run_query(query_text)  
 
 
 #Analyze boost
