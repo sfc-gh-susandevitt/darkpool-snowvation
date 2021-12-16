@@ -77,8 +77,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 st.header("Your selections:")
 st.write("")
 
-st.header("Potential Accuracy Boost for Your Dataset")
-st.write("")
+
 
 
 
