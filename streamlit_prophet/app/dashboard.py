@@ -137,7 +137,25 @@ st.subheader("Analyze potential boost?")
 st.write("")
 analyze = st.button('Analyze')
 
+#Select Table
 ## Add column + line chart
+
+def run_query(query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+
+        # Return a Pandas DataFrame containing all of the results.
+        df = cur.fetch_pandas_all()
+
+ 
+run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
+
+st.dataframe(df)
+
+
+
+
+
 
 # Boost
 st.header("Auto-boost your models?")
