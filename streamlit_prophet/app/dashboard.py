@@ -162,13 +162,12 @@ if pricing==True:
             df = cur.fetch_pandas_all()
             col1,col2,col3 = st.columns(3)
             col1.metric("Increased Accuracy", "47%")
-
-            col1.metric("Increased Accuracy",value = st.write(accuracy) )
             col2.metric("Rows","1,000,023")
             col3.metric("Price","$1,000")
             st.dataframe(df)
             accuracy ='"'+df['INCREASED_ACCURACY']+'"'
             st.write(accuracy)
+            st.metric("Increased Accuracy",value = st.write(accuracy) )
 if pricing==False:
     def run_query(query):
         with conn.cursor() as cur:
