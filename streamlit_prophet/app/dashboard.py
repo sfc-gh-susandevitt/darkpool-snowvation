@@ -136,8 +136,9 @@ st.subheader("Analyze Potential Boost?")
 st.write("")
 st.button("Yes, Analyze Boost")
 
-st.header("Potential Accuracy Boost for Your Dataset")
-st.write("")
+if st.button=='Yes, Analyze Boost"':
+    st.subheader("Potential Accuracy Boost for Your Dataset")
+    st.write("")
 
 st.header("Auto-boost your models?")
 # Launch analysis
