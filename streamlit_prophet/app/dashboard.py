@@ -130,7 +130,7 @@ run_query(query_text)
 ## Add column + line chart 
 
 st.subheader("Analyze potential boost?")
-analyze = st.radio("",('Off','On'),index=0)
+analyze = st.radio("",('Off','On'),index=0,key='analyze')
 
 if analyze=='On':
     def run_query(query):
@@ -154,7 +154,7 @@ run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON
 # Execute Boost
 
 st.header("Auto-boost your model?")
-boost = st.radio("",('Off','On'),index=0)
+boost = st.radio("",('Off','On'),index=0,key='boost')
 
 
 if boost=='On':
