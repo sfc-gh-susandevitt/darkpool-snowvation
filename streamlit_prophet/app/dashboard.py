@@ -161,7 +161,7 @@ if analyze==True:
             chart_data = [job,auc,acc] 
             #st.write(auc)
             #st.bar_chart(chart_data)
-            st.plotly_chart(chart_data, use_container_width=True)
+            st.bar_chart(chart_data)
 if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
