@@ -154,19 +154,7 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 
 st.header("Pricing Model")
 st.header("Analyze Potential Boost")
-analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
-if analyze==True:
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
-
-            # Return a Pandas DataFrame containing all of the results.
-            df = cur.fetch_pandas_all()
-            st.dataframe(df)
-          #  chart_data = (df[['TRAINING_JOB','AUC']])
-          #  st.bar_chart(chart_data)
-if analyze==False:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
