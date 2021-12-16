@@ -168,7 +168,7 @@ if boost=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-if st.session_state.key('On'):
+if st.session_state.key=='On':
    st.balloons()
 if boost=='Off':
     def run_query(query):
