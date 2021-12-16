@@ -111,7 +111,7 @@ def run_query(query):
         
 def run_query2(query_text):
     with conn.cursor() as cur:
-        cur.execute(query)
+        cur.execute(query_text)
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
