@@ -106,10 +106,11 @@ def run_query(query):
         #st.dataframe(df)
         #labels = df[‘’].unique()
         option = st.sidebar.selectbox('Select your dependent variable', df)
+        st.write(option)
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
-#text2 = "DEMAND.DATA.CUSTOMERS"
-text2 = st.write(option)
+text2 = "DEMAND.DATA.CUSTOMERS"
+#text2 = st.write(option)
 text3 = "' order by 1 asc;"
 
 query_text = text1+text2+text3
