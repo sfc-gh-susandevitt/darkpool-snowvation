@@ -162,6 +162,7 @@ if analyze==True:
             acc=df["INCREASED_ACCURACY"].astype(str)
             source=df
             base=alt.Chart(source).encode()
+            st.write(source)
             #bar=base.mark_bar().encode(y='auc:Q')
             #line=base.mark_line(color='red').encode(y='acc:Q')
             #(bar + line).properties(width=600)
