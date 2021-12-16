@@ -72,6 +72,9 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 # Initialize connection.
 # Uses st.cache to only run once.
 
+st.header("Your selections:")
+st.write("")
+
 st.sidebar.title("Configure your analysis")
 st.sidebar.caption("Snowflake Database = SNOWCAT2")
 
@@ -141,10 +144,8 @@ if analysis == 'On':
 
 # Visualizations        
  
-st.header("1. Overview (visualization of data)")
-st.write("")
+
 st.header("2. Evaluation on Dataset")
 st.write("")
-st.header("3. Impact of components and regressors")
-st.write("")
+
 
