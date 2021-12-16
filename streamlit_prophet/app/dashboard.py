@@ -132,10 +132,10 @@ text3 = "' order by 1 asc;"
 query_text = text1+text2+text3
 run_query(query_text)  
 
-st.subheader("Analyze Potential Boost?")
-st.write("")
+with st.expander("Analyze Potential Boost",expanded=False):
+    st.write("Here is your boost analysis:")
 
-testboost = st.button("Yes")
+
 
 
 
