@@ -146,7 +146,7 @@ if analyze=='Off':
             cur.execute(query)
             
 
-run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
+run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;") 
 
 
 
@@ -166,11 +166,14 @@ if boost=='On':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
+            st.bar_chart(df[['TRAINING_JOB','AUC','INCREASED_ACCURACY']]
 if boost=='Off':
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
-
+            
+            
+        
 
 run_query("select * from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
 
