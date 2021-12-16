@@ -162,7 +162,7 @@ st.session_state['key']=boost
 st.write(st.session_state.key)
 
 #if boost=='On':
-if boost=='True':
+if boost==True:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
@@ -170,9 +170,9 @@ if boost=='True':
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-if st.session_state.key=='True':
+if st.session_state.key==True:
    st.balloons()
-if boost=='False':
+if boost==False:
     def run_query(query):
         with conn.cursor() as cur:
             cur.execute(query)
