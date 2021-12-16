@@ -227,6 +227,7 @@ if st.button('Run Inference'):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
+        st.write(df)
 
     run_query("select * from darkpool_common.ml.demand1_scoring_output limit 20;")            
             
