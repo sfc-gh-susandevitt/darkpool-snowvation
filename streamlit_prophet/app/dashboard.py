@@ -123,7 +123,7 @@ if st.button('Run Baseline Analysis',key='basebutton'):
         df = cur.fetch_pandas_all()
         baseline = df["AUC"]
         st.write(baseline)
-        if 'key' not in st.session_state:
+        if 'basebutton' not in st.session_state:
             st.session_state['basebutton']=True
             st.write(st.session_state.basebutton)
 
