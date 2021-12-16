@@ -141,7 +141,7 @@ if analyze==True:
 
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
-            base = alt.Chart(df).mark_bar().encode(x='TRAINING_JOB', y='POINTS')
+            base = alt.Chart(df).mark_bar().encode(x='SUPPLIER', y='POINTS')
             st.altair_chart(base, use_container_width=True)
             st.dataframe(df)
 
@@ -155,7 +155,7 @@ if analyze==False:
                 
 
 
-run_query("select distinct TRAINING_JOB, AUC, AUC-(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline')  as POINTS, concat(to_varchar(to_numeric((AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1)*100,10,0)),'%') as PERCENTAGE_IMPROVEMENT  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB not in ('baseline');")
+run_query("select distinct TRAINING_JOB as SUPPLIER, AUC, AUC-(select distinct AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline')  as POINTS, concat(to_varchar(to_numeric((AUC/(select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline') - 1)*100,10,0)),'%') as PERCENTAGE_IMPROVEMENT  from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB not in ('baseline');")
 
 
 # Show Price
