@@ -74,7 +74,7 @@ st.sidebar.image(load_image("darkpool.png"), use_column_width=True)
 
 # Headers   
 
-st.header("Your Selections:")
+st.header("Your Selections")
 
 #Sidebar
 
@@ -129,7 +129,7 @@ run_query(query_text)
 
 ## Add column + line chart 
 
-st.header("Analyze potential boost?")
+st.header("Analyze Potential Boost")
 analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
 
 if analyze==True:
@@ -150,12 +150,14 @@ if analyze==False:
 
 run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_number(AUC,10,2)/(select to_number(AUC,10,2) from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline'),10,2) - 1 as INCREASED_ACCURACY , TOTAL_ROWS  from DARKPOOL_COMMON.ML.TRAINING_LOG;;") 
 
+# Show Price
+st.header("Pricing Model")
 
 
 
 # Execute Boost
 
-st.header("Auto-boost your model?")
+st.header("Auto-Boost Your Model")
 boost=st.checkbox("Auto-boost my model",value=False,key='boost')
 #boost = st.radio("",('Off','On'),index=0,key='boost')
 st.session_state['key']=boost
