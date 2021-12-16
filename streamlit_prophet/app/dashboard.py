@@ -156,19 +156,21 @@ if analyze==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-            auc=df["AUC"]
-            job=df["TRAINING_JOB"]
-            acc=df["INCREASED_ACCURACY"]
+            auc=df["AUC"].astypestring()
+            job=df["TRAINING_JOB"].astypestring()
+            acc=df["INCREASED_ACCURACY"].astypestring()
             source=[job,auc,acc] 
-            st.altair_chart(base,use_container_width=True)
-            base=alt.Chart(source).encode(x='TRAINING_JOB')
-            bar=base.mark_bar().encode(y='AUC')
-            line=base.mark_line(color='red').encode(y='INCREASED_ACCURACY')
-            (bar + line).properties(width=600)
-            chart_data = [job,auc,acc] 
+            chart_data = [job,auc,acc]  
+            st.bar_chart(chart_data)
+#             st.altair_chart(base,use_container_width=True)
+#             base=alt.Chart(source).encode(x='TRAINING_JOB')
+#             bar=base.mark_bar().encode(y='AUC')
+#             line=base.mark_line(color='red').encode(y='INCREASED_ACCURACY')
+#             (bar + line).properties(width=600)
+
             #st.write(auc)
             #st.bar_chart()
-            #st.bar_chart(chart_data)
+            #
             
 if analyze==False:
     def run_query(query):
