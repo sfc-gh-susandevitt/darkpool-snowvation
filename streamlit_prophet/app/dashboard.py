@@ -156,13 +156,21 @@ run_query("select INDEX, TRAINING_JOB, AUC, AUC/(select AUC from DARKPOOL_COMMON
 
 
 # Boost
-st.header("Auto-boost your models?")
+st.header("Auto-boost your model?")
 boost=st.button('Boost')
 
 ## Add table/dataframe of results
+if boost==True
+    def run_query(query):
+      with conn.cursor() as cur:
+        cur.execute(query)
+
+        # Return a Pandas DataFrame containing all of the results.
+        df = cur.fetch_pandas_all()
+        st.dataframe(df)
 
 
-
+run_query("select * from DARKPOOL_COMMON.PUBLIC.TRAIN_OUT;") 
 
 
 
