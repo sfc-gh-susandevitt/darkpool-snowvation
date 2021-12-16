@@ -128,7 +128,7 @@ run_query(query_text)
 #Analyze boost
 
 st.subheader("Analyze potential boost?")
-analyze = st.radio("",('Off','On'))
+analyze = st.radio("",('Off','On'),index=0)
 
 
 
