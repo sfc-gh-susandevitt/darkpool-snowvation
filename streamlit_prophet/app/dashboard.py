@@ -92,7 +92,7 @@ def run_query(query):
         #st.dataframe(df)
         #labels = df[‘’].unique()
         option = st.sidebar.selectbox('Select your dataset', df)
-        st.write(option)
+        st.write('You have selected dataset ',option)
  
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');") 
 
