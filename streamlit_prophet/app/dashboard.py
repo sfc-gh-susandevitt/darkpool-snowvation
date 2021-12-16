@@ -156,9 +156,9 @@ if analyze==True:
             # Return a Pandas DataFrame containing all of the results.
             df = cur.fetch_pandas_all()
             st.dataframe(df)
-            auc=df["AUC"].astypestring()
-            job=df["TRAINING_JOB"].astypestring()
-            acc=df["INCREASED_ACCURACY"].astypestring()
+            auc=df["AUC"].astype(str)
+            job=df["TRAINING_JOB"].astype(str)
+            acc=df["INCREASED_ACCURACY"].astype(str)
             source=[job,auc,acc] 
             chart_data = [job,auc,acc]  
             st.bar_chart(chart_data)
