@@ -160,11 +160,11 @@ if analyze==True:
             auc=df["AUC"]
             job=df["TRAINING_JOB"]
             acc=df["INCREASED_ACCURACY"]
-            source=df
-            #st.altair_chart(base,use_container_width=True)
-            base=alt.Chart(source).encode(x='TRAINING_JOB:O')
-            bar=base.mark_bar().encode(y='AUC:Q')
-            line=base.mark_line(color='red').encode(y='INCREASED_ACCURACY:Q')
+            source=[job,auc,acc] 
+            st.altair_chart(base,use_container_width=True)
+            base=alt.Chart(source).encode(x=job:O)
+            bar=base.mark_bar().encode(y=auc:Q)
+            line=base.mark_line(color='red').encode(y=acc:Q)
             (bar + line).properties(width=600)
             #chart_data = [job,auc,acc] 
             #st.write(auc)
