@@ -109,7 +109,7 @@ def run_query(query):
 
 text1 = "select COLUMN_NAME from DEMAND.INFORMATION_SCHEMA.COLUMNS where concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) = '"
 text2 = "' order by 1 asc;"
-text3 = option
+text3 = "DEMAND.DATA.CUSTOMERS"
 query_text = text1+text2+text3
 run_query(query_text)    
  
