@@ -102,17 +102,15 @@ def run_query(query):
         text2 = option
         text3 = "' order by 1 asc;"   
         query_text = text1+text2+text3
-        st.write(query_text)
+        #st.write(query_text)
+        run_query2(query_text)
  
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA not in ('INFORMATION_SCHEMA');") 
 
 
-
-
 #Select Dependent Variable
-
  
-def run_query2(query):
+def run_query2(query_text):
     with conn.cursor() as cur:
         cur.execute(query)
 
