@@ -95,8 +95,6 @@ def run_query(query):
 
         # Return a Pandas DataFrame containing all of the results.
         df = cur.fetch_pandas_all()
-        #st.dataframe(df)
-        #labels = df[‘’].unique()
         option = st.sidebar.selectbox('Select your dataset', df)
         st.write('You have selected dataset ',option)
  
@@ -155,9 +153,13 @@ run_query("select INDEX, TRAINING_JOB, to_number(AUC,10,2) as AUC, to_number(to_
 st.header("Pricing Model")
 st.header("Analyze Potential Boost")
 
-    def run_query(query):
-        with conn.cursor() as cur:
-            cur.execute(query)
+def run_query(query):
+  with conn.cursor() as cur:
+      cur.execute(query)
+
+       # Return a Pandas DataFrame containing all of the results.
+       df = cur.fetch_pandas_all()
+       st.dataframe(df)
             
 
 run_query("select *  from DARKPOOL_COMMON.PUBLIC.PRICING_OUTPUT;") 
