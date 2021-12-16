@@ -107,7 +107,7 @@ def run_query(query):
         query_text = text1+text2+text3
         #st.write(query_text)
         
- def run_query2(query_text):
+def run_query2(query_text):
     with conn.cursor() as cur:
         cur.execute(query)
 
@@ -120,7 +120,7 @@ def run_query(query):
         
         
         
-        run_query2(query_text)
+run_query2(query_text)
         
         
  
