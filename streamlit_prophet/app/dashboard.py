@@ -116,15 +116,23 @@ def run_query2(query_text):
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-if st.button('Run Baseline Analysis'):
+# if st.button('Run Baseline Analysis'):
+#     def run_query(query_text2):
+#       with conn.cursor() as cur:
+#         cur.execute(query_text2)      
+#         df = cur.fetch_pandas_all()
+#         baseline = df["AUC"]
+#         st.write(baseline)
+        
+result = st.button('Run Baseline Analysis')
     def run_query(query_text2):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
         baseline = df["AUC"]
-        st.write(baseline)
-        
-
+        st.write(result)
+        if result:
+            st.write(baseline)
 
     run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
@@ -136,7 +144,6 @@ if st.button('Run Baseline Analysis'):
 
 st.subheader("Analyze Potential Boost")
 analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
-st.button('Run Baseline Analysis')=True
 
 
 if analyze==True:
