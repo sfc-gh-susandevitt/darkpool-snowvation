@@ -116,16 +116,15 @@ def run_query2(query_text):
         
 run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEMAND1.INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA in ('PUBLIC');") 
 
-if st.button('Run Baseline Analysis',key='basebutton'):
+if st.button('Run Baseline Analysis'):
     def run_query(query_text2):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
         baseline = df["AUC"]
         st.write(baseline)
-        if 'basebutton' not in st.session_state:
-            st.session_state['basebutton']=True
-            st.write(st.session_state.basebutton)
+        
+
 
     run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
@@ -137,6 +136,8 @@ if st.button('Run Baseline Analysis',key='basebutton'):
 
 st.subheader("Analyze Potential Boost")
 analyze = st.checkbox("Show me my potential accuracy boost",value=False,key='analyze')
+st.button('Run Baseline Analysis')=True
+
 
 if analyze==True:
     def run_query(query):
