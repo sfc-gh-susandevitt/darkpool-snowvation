@@ -125,7 +125,7 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #         st.write(baseline)
         
 result = st.button('Run Baseline Analysis')
-def run_query(query_text2):
+    def run_query(query_text2):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
