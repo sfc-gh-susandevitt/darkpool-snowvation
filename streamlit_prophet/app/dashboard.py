@@ -134,7 +134,11 @@ if baseline==True:
         baseline = df["AUC"]
         st.write(baseline)
 
-        
+if baseline==False:
+    def run_query(query):
+        with conn.cursor() as cur:
+            cur.execute(query)
+                       
 run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
 
