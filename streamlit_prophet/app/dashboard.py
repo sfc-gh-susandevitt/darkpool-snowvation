@@ -124,16 +124,16 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #         baseline = df["AUC"]
 #         st.write(baseline)
         
-baseline = st.checkbox("Show me my pricing model",value=False,key='baseline')
+baseline = st.checkbox("Show me my baseline",value=False,key='baseline')
 
-def run_query(query_text2):
+if baseline==True:
+    def run_query(query_text2):
       with conn.cursor() as cur:
         cur.execute(query_text2)      
         df = cur.fetch_pandas_all()
         baseline = df["AUC"]
-        st.write(result)
-        if result:
-            st.write(baseline)
+        st.write(baseline)
+
         
 run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
