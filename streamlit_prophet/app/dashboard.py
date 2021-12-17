@@ -124,7 +124,7 @@ run_query("select concat(TABLE_CATALOG,'.',TABLE_SCHEMA,'.',TABLE_NAME) from DEM
 #         baseline = df["AUC"]
 #         st.write(baseline)
         
-result = st.button('Run Baseline Analysis')
+baseline = st.checkbox("Show me my pricing model",value=False,key='baseline')
 
 def run_query(query_text2):
       with conn.cursor() as cur:
@@ -173,7 +173,7 @@ run_query("select distinct TRAINING_JOB as SUPPLIER, AUC, AUC-(select distinct A
 
 st.subheader("Pricing Model")
 
-pricing = st.checkbox("Show me my pricing model",value=False,key='analyze')
+pricing = st.checkbox("Show me my pricing model",value=False,key='pricing')
 
 if pricing==True:
     def run_query(query):
