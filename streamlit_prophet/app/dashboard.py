@@ -134,6 +134,7 @@ def run_query(query_text2):
         st.write(result)
         if result:
             st.write(baseline)
+        result= True
 
 run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
