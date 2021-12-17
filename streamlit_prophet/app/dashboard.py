@@ -135,7 +135,7 @@ def run_query(query_text2):
         if result:
             st.write(baseline)
 
-    run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
+run_query("select AUC from DARKPOOL_COMMON.ML.TRAINING_LOG where TRAINING_JOB = 'baseline';")            
 
 
 
